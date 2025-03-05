@@ -1,0 +1,3 @@
+(ESTO PARA EJECUTAR)
+
+gcc so_long.c -Imlx -Lmlx -lmlx -lXext -lX11 -o so_long

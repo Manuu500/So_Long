@@ -1,7 +1,7 @@
 NAME = so_long.a
 
 # Archivos fuente
-SRCS = 
+SRCS = so_long.c
 
 FLAGS = -Wall -Wextra -g -Werror
 
