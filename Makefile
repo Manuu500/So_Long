@@ -1,42 +1,55 @@
-NAME = so_long.a
-
-# Archivos fuente
-SRCS = so_long.c
-
-FLAGS = -Wall -Wextra -g -Werror
+NAME	:= so_long
 
 CC = cc
+CFLAGS	:= -Wextra -Wall -Werror -fsanitize=address -g
 
-CLEAN = rm -rf
+LIBMLX	:= ./libs/MLX42
+LIBFT	:= ./libs/libft
 
-INCLUDES = -I/usr/include -Imlx
+HEADERS	:=	-I ./inc \
+			-I $(LIBMLX)/include \
+			-I $(LIBFT)
 
-MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+LIBS	:=	$(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -fsanitize=address\
+			$(LIBFT)/libft.a 
 
-# CLEAN = del /Q /F
+SRC :=	main.c \
 
-OBJ := $(SRCS:.c=.o)
+OBJ	= $(patsubst src%, obj%, $(SRC:.c=.o))
 
-all: $(NAME)
+all: libmlx libft obj $(NAME)
 
-.c.o:
-	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
+libmlx:
+	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
-$(OBJ): $(SRCS)
-	$(CC) -g $(FLAGS) -c $(SRCS)
+libft:
+	@make -C libs/libft all
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
+$(NAME): $(OBJ)
+	@echo "compiling ${NAME}"
+	@$(CC) $(OBJ) $(LIBS) $(HEADERS) -o $(NAME)
 
-# $(NAME): $(OBJ)
-# 	ar -rsc $(NAME) $(OBJ)
+bonus: libmlx libft obj ${B_OBJ}
+	@$(CC) $(B_OBJ) $(LIBS) $(HEADERS) -o $(NAME) && printf "Compiling ${NAME} with bonus"
+
+obj/%.o: src/%.c
+	@$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@ && printf "Compiling: $(notdir $<)\n"
+
+obj/%.o: bonus/%.c
+	@$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@ && printf "Compiling: $(notdir $<)\n"
+
+obj:
+	@mkdir -p obj
 
 clean:
-	@$(CLEAN) *.o
+	@rm -rf obj
+	@make -C libs/libft clean
+	@rm -rf $(LIBMLX)/build
 
 fclean: clean
-	@$(CLEAN) *.a
+	@make -C libs/libft fclean
+	@rm -f $(NAME)
 
-re: fclean all
+re: clean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all, clean, fclean, re, libmlx, libft, obj
