@@ -13,7 +13,10 @@ HEADERS	:=	-I ./inc \
 LIBS	:=	$(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -fsanitize=address\
 			$(LIBFT)/libft.a 
 
-SRC :=	main.c \
+SRC :=	src/main.c \
+		src/hooks.c \
+		src/image.c \
+		
 
 OBJ	= $(patsubst src%, obj%, $(SRC:.c=.o))
 
