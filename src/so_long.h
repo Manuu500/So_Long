@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/06 19:11:09 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/06 19:54:19 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void	print(mlx_key_data_t keydata, void *param);
 void	loop_functions(void	*param);
 void	ft_error();
 void check_image(mlx_image_t *image);
+void	load_image(t_vars vars);
 
 #endif
