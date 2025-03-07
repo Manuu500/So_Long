@@ -6,13 +6,13 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/06 19:54:19 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/07 18:37:17 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# include <MLX42/MLX42.h>
+# include "../libs/MLX42/include/MLX42/MLX42.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
@@ -23,22 +23,24 @@
 typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
+	mlx_image_t	*image;
 }				t_vars;
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+// typedef struct	s_data {
+// 	void	*img;
+// 	char	*addr;
+// 	int		bits_per_pixel;
+// 	int		line_length;
+// 	int		endian;
+// }				t_data;
 
 
 void	close_window(void *param);
 void	print(mlx_key_data_t keydata, void *param);
 void	loop_functions(void	*param);
 void	ft_error();
-void check_image(mlx_image_t *image);
-void	load_image(t_vars vars);
+void	check_image(mlx_image_t *image);
+void	load_image(t_vars *vars);
+void	key_hooks(mlx_key_data_t keydata, void *param);
 
 #endif
