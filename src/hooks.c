@@ -6,14 +6,15 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 17:25:43 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/10 13:06:35 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/10 18:31:41 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	print(mlx_key_data_t keydata)
+void	print_text(mlx_key_data_t keydata, void *params)
 {
+	(void) params;
 	if(keydata.key == MLX_KEY_1 && keydata.action == MLX_RELEASE)
 		printf("42");
 }

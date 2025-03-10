@@ -17,6 +17,7 @@ SRC :=	src/main.c \
 		src/hooks.c \
 		src/image.c \
 		src/utils.c \
+		src/map.c \
 
 OBJ	= $(patsubst src%, obj%, $(SRC:.c=.o))
 
