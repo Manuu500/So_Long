@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/07 19:25:58 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/10 13:03:50 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,13 @@ typedef struct	s_vars {
 
 
 void	close_window(void *param);
-void	print(mlx_key_data_t keydata, void *param);
+void	print(mlx_key_data_t keydata);
 void	loop_functions(void	*param);
 void	ft_error();
 void	check_image(mlx_image_t *image);
 void	load_image(t_vars *vars);
 void	key_hooks(mlx_key_data_t keydata, void *param);
 void	load_background(t_vars *vars);
+void	move_player(mlx_instance_t	*player_pos, mlx_key_data_t keydata);
 
 #endif
