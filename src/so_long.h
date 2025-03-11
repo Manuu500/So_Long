@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/10 20:24:51 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/11 18:26:51 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ typedef struct	s_vars {
 	mlx_image_t	*image;
 }				t_vars;
 
+typedef struct	s_map_data {
+	char map[MAX_HEIGHT][MAX_WIDTH];
+	int	width;
+	int	height;
+	int	offset_x;
+	int offset_y;
+}				t_map_data;
+
 // typedef struct	s_data {
 // 	void	*img;
 // 	char	*addr;
@@ -49,7 +57,8 @@ void	load_image(t_vars *vars);
 void	key_hooks(mlx_key_data_t keydata, void *param);
 void	load_background(t_vars *vars);
 void	move_player(mlx_instance_t	*player_pos, mlx_key_data_t keydata);
-void    read_map(const char *file, char map[MAX_HEIGHT][MAX_WIDTH], int *width, int *height);
-void    process_map(char map[MAX_HEIGHT][MAX_WIDTH], int width, int height, t_vars *vars);
+void    read_map(const char *file, t_map_data *map, int *width, int *height);
+void    process_map(t_map_data *mapping, int width, int height, t_vars *vars);
+void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y);
 
 #endif

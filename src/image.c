@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 18:33:39 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/10 18:28:55 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:00:46 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	load_image(t_vars *vars)
 	vars->image = mlx_texture_to_image(vars->mlx, texture);
 	if (!vars->image)
 		ft_error();
+	mlx_resize_image(vars->image, 30, 30);
 	if (mlx_image_to_window(vars->mlx, vars->image, x, y) < 0)
 		ft_error();
 	mlx_delete_texture(texture);

@@ -6,13 +6,13 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/10 20:37:11 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/11 18:33:40 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    read_map(const char *file, char map[MAX_HEIGHT][MAX_WIDTH], int *width, int *height)
+void    read_map(const char *file, t_map_data *mapping, int *width, int *height)
 {
     int fd;
     char    *line;
@@ -29,7 +29,7 @@ void    read_map(const char *file, char map[MAX_HEIGHT][MAX_WIDTH], int *width, 
         *width = 0;
         while (line[*width] != '\n' && line[*width] != '\0')
         {
-            map[*height][*width] = line[*width];
+            mapping->map[*height][*width] = line[*width];
             (*width)++;
         }
         (*height)++;
@@ -40,30 +40,39 @@ void    read_map(const char *file, char map[MAX_HEIGHT][MAX_WIDTH], int *width, 
     close(fd);
 }
 
-void    process_map(char map[MAX_HEIGHT][MAX_WIDTH], int width, int height, t_vars *vars)
+void    process_map(t_map_data *mapping, int width, int height, t_vars *vars)
 {
     int x;
     int y;
-    mlx_image_t *image;
-    mlx_texture_t   *texture;
-
+    
     y = 0;
-    image = vars->image;
+	x = 0;
+    mapping->offset_x = (WIDTH - (width * 21)) / 2;
+    mapping->offset_y = (HEIGHT - (height * 21)) / 2;
+	
     while (y < height)
     {
         x = 0;
         while (x < width)
         {
-            if(map[y][x] == '1')
-            {
-                texture = mlx_load_png("textures/pared.png");
-                image = mlx_texture_to_image(vars->mlx, texture); 
-                mlx_resize_image(image, 21, 21);
-                mlx_image_to_window(vars->mlx, image, x * 21, y * 21);
-                mlx_delete_texture(texture);
-            }
+            place_walls(mapping, vars, x, y);            
             x++;
         }
         y++;
     }
+}
+
+void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
+{
+	mlx_texture_t *texture;
+	mlx_image_t	*image;
+	
+    if(mapping->map[y][x] == '1')
+	{
+		texture = mlx_load_png("textures/pared.png");
+		image = mlx_texture_to_image(vars->mlx, texture); 
+		mlx_resize_image(image, 21, 21);
+		mlx_image_to_window(vars->mlx, image, x * 21 + mapping->offset_x, y * 21 + mapping->offset_y);
+		mlx_delete_texture(texture);
+	}
 }
