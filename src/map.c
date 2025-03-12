@@ -6,16 +6,16 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/11 18:33:40 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/12 13:56:30 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    read_map(const char *file, t_map_data *mapping, int *width, int *height)
+void read_map(const char *file, t_map_data *mapping, int *width, int *height)
 {
     int fd;
-    char    *line;
+    char *line;
 
     fd = open(file, O_RDONLY);
     if (fd < 0)
@@ -46,7 +46,6 @@ void    process_map(t_map_data *mapping, int width, int height, t_vars *vars)
     int y;
     
     y = 0;
-	x = 0;
     mapping->offset_x = (WIDTH - (width * 21)) / 2;
     mapping->offset_y = (HEIGHT - (height * 21)) / 2;
 	
@@ -67,12 +66,22 @@ void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
 	mlx_texture_t *texture;
 	mlx_image_t	*image;
 	
-    if(mapping->map[y][x] == '1')
+    if (mapping->map[y][x] == '1')
 	{
 		texture = mlx_load_png("textures/pared.png");
 		image = mlx_texture_to_image(vars->mlx, texture); 
 		mlx_resize_image(image, 21, 21);
-		mlx_image_to_window(vars->mlx, image, x * 21 + mapping->offset_x, y * 21 + mapping->offset_y);
+		mlx_image_to_window(vars->mlx, image, x * 21 + mapping->offset_x , y * 21 + mapping->offset_y);
 		mlx_delete_texture(texture);
 	}
+    else if (mapping->map[y][x] == 'C')
+    {
+        texture = mlx_load_png("textures/box.png");
+        image = mlx_texture_to_image(vars->mlx, texture);
+        mlx_resize_image(image, 21, 21);
+        mlx_image_to_window(vars->mlx, image, x * 21 + mapping->offset_x, y * 21 + mapping->offset_y);
+        mlx_delete_texture(texture);
+    }
+    else if(mapping->map[y][x] == 'P')
+        load_image(vars, x * 21 + mapping->offset_x, y * 21 + mapping->offset_y);
 }

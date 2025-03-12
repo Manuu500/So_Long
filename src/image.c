@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 18:33:39 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/11 15:00:46 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/12 13:55:03 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,17 @@
 //         ft_error();
 // }
 
-void	load_image(t_vars *vars)
+void	load_image(t_vars *vars, int x, int y)
 {
 	mlx_texture_t *texture;
-	int x;
-	int y;
-	
-	x = WIDTH / 2;
-	y = HEIGHT / 2;
+
 	texture = mlx_load_png("textures/protagonist.png");
 	if (!texture)
 		ft_error();
 	vars->image = mlx_texture_to_image(vars->mlx, texture);
 	if (!vars->image)
 		ft_error();
-	mlx_resize_image(vars->image, 30, 30);
+	mlx_resize_image(vars->image, 21, 21);
 	if (mlx_image_to_window(vars->mlx, vars->image, x, y) < 0)
 		ft_error();
 	mlx_delete_texture(texture);

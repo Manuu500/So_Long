@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/11 18:26:51 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/12 13:55:14 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <fcntl.h>
 # define WIDTH 1200
 # define HEIGHT 600
-# define MAX_WIDTH 40
-# define MAX_HEIGHT 40
+# define MAX_WIDTH 100
+# define MAX_HEIGHT 100
 
 
 typedef struct	s_vars {
@@ -53,7 +53,7 @@ void	print_text(mlx_key_data_t keydata, void *params);
 void	loop_functions(void	*param);
 void	ft_error();
 void	check_image(mlx_image_t *image);
-void	load_image(t_vars *vars);
+void	load_image(t_vars *vars, int x, int y);
 void	key_hooks(mlx_key_data_t keydata, void *param);
 void	load_background(t_vars *vars);
 void	move_player(mlx_instance_t	*player_pos, mlx_key_data_t keydata);
