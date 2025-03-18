@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/18 14:23:49 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:17:05 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@
 # define HEIGHT 600
 # define PIXEL_SPACING 20
 
+typedef struct	s_map_data {
+	char **map;
+	int	width;
+	int	height;
+	int	offset_x;
+	int offset_y;
+}				t_map_data;
 
 typedef struct	s_vars {
 	void	*mlx;
@@ -31,14 +38,6 @@ typedef struct	s_vars {
 	int	player_x;
 	int	player_y;
 }				t_vars;
-
-typedef struct	s_map_data {
-	char **map;
-	int	width;
-	int	height;
-	int	offset_x;
-	int offset_y;
-}				t_map_data;
 
 // typedef struct	s_data {
 // 	void	*img;

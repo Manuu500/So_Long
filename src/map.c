@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/18 16:26:40 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:25:05 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,23 @@ void read_map(const char *file, t_map_data *mapping)
     fd = open(file, O_RDONLY);
     if (fd < 0)
         exit(EXIT_FAILURE);
-    // temp = ft_get_next_line(fd);
     while ((temp = ft_get_next_line(fd)) != NULL)
     {
-        char *old_line = line; // Guarda la línea anterior
+        char *old_line = line;
         line = ft_strjoin(line, temp);
-        free(temp); // Libera la memoria de temp
-        free(old_line); // Libera la memoria de la línea anterior
+        free(temp);
+        free(old_line);
     }
     close (fd);
     mapping->map = ft_split(line, '\n');
     free (line);
+    mapping->height = 0;
+    while (mapping->map[mapping->height])
+        mapping->height++;
+    if (mapping->height > 0)
+        mapping->width = ft_strlen(mapping->map[0]);
+    else
+        mapping->width = 0;
 }
 
 void    process_map(t_map_data *mapping, int width, int height, t_vars *vars)
@@ -40,6 +46,8 @@ void    process_map(t_map_data *mapping, int width, int height, t_vars *vars)
     int x;
     int y;
     
+    (void) height;
+    (void) width;
     y = 0;
     if (width > mapping->width || height > mapping->height) {
         printf("Error: dimensiones de la ventana mayores que el mapa.\n");
@@ -47,13 +55,14 @@ void    process_map(t_map_data *mapping, int width, int height, t_vars *vars)
     }
     mapping->offset_x = (WIDTH - (width * 20)) / 2;
     mapping->offset_y = (HEIGHT - (height * 20)) / 2;
-	
-    while (y < height)
+	printf("Dimensiones del mapa: width=%d, height=%d\n", mapping->width, mapping->height);
+    while (y < mapping->height)
     {
         x = 0;
-        while (x < width)
+        while (x < mapping->width)
         {
-            place_walls(mapping, vars, x, y);            
+            // Verificar límites antes de llamar a place_walls
+            place_walls(mapping, vars, x, y);
             x++;
         }
         y++;
