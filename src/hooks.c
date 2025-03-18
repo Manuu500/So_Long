@@ -6,18 +6,18 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 17:25:43 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/10 18:31:41 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/12 19:50:32 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	print_text(mlx_key_data_t keydata, void *params)
-{
-	(void) params;
-	if(keydata.key == MLX_KEY_1 && keydata.action == MLX_RELEASE)
-		printf("42");
-}
+// void	print_text(mlx_key_data_t keydata, void *params)
+// {
+// 	(void) params;
+// 	if(keydata.key == MLX_KEY_1 && keydata.action == MLX_RELEASE)
+// 		printf("42");
+// }
 
 void	close_window(void *param)
 {
@@ -41,6 +41,6 @@ void	key_hooks(mlx_key_data_t keydata, void *param)
 		 keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_RIGHT)
 		 && keydata.action == MLX_RELEASE)
 	{
-		move_player(image->instances, keydata);
+		move_player(vars, image->instances, keydata, param);
 	}
 }
