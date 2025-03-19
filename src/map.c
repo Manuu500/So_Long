@@ -6,11 +6,18 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/18 17:25:05 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/19 20:12:57 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+// static int is_wall(t_map_data *mapping, int x, int y)
+// {
+//     if (x < 0 || x >= mapping->width || y < 0 || y >= mapping->height)
+//         return 1; // Consider out-of-bounds as walls
+//     return (mapping->map[y][x] == '1');
+// }
 
 void read_map(const char *file, t_map_data *mapping)
 {
@@ -49,19 +56,15 @@ void    process_map(t_map_data *mapping, int width, int height, t_vars *vars)
     (void) height;
     (void) width;
     y = 0;
-    if (width > mapping->width || height > mapping->height) {
-        printf("Error: dimensiones de la ventana mayores que el mapa.\n");
+    if (width > mapping->width || height > mapping->height)
         return;
-    }
     mapping->offset_x = (WIDTH - (width * 20)) / 2;
     mapping->offset_y = (HEIGHT - (height * 20)) / 2;
-	printf("Dimensiones del mapa: width=%d, height=%d\n", mapping->width, mapping->height);
     while (y < mapping->height)
     {
         x = 0;
         while (x < mapping->width)
         {
-            // Verificar límites antes de llamar a place_walls
             place_walls(mapping, vars, x, y);
             x++;
         }
@@ -74,23 +77,12 @@ void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
 	mlx_texture_t *texture;
 	mlx_image_t	*image;
 	
-    if (y < 0 || y >= mapping->height || x < 0 || x >= mapping->width) {
-        printf("Índice fuera de rango: x=%d, y=%d\n", x, y);
-        return; // Manejar el error
-    }
+    if (y < 0 || y >= mapping->height || x < 0 || x >= mapping->width)
+        return;
     if (mapping->map[y][x] == '1')
 	{
 		texture = mlx_load_png("textures/pared.png");
-        if (!texture) {
-            printf("Error al cargar la textura de pared.\n");
-            return; // Manejar el error
-        }
 		image = mlx_texture_to_image(vars->mlx, texture); 
-        if (!image) {
-            printf("Error al convertir la textura a imagen.\n");
-            mlx_delete_texture(texture);
-            return; // Manejar el error
-        }
 		mlx_resize_image(image, 21, 21);
 		mlx_image_to_window(vars->mlx, image, x * PIXEL_SPACING + mapping->offset_x , y * PIXEL_SPACING + mapping->offset_y);
 		mlx_delete_texture(texture);
@@ -104,8 +96,9 @@ void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
         mlx_delete_texture(texture);
     }
     else if(mapping->map[y][x] == 'P'){
-        load_image(vars, x * PIXEL_SPACING + mapping->offset_x, y * PIXEL_SPACING + mapping->offset_y);
+        load_protagonist(vars, x * PIXEL_SPACING + mapping->offset_x, y * PIXEL_SPACING + mapping->offset_y);
         vars->player_x = x;
-        vars->player_y = y;   
+        vars->player_y = y;
     }
 }
+
