@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 17:07:55 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/19 20:31:32 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/19 20:47:29 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	main(void)
 	mlx_loop_hook(vars.mlx, loop_functions, &vars);
 	load_background(&vars);	
 	process_map(&map, map.width, map.height, &vars);
-	mlx_key_hook(vars.mlx, handle_key_event, &vars);
 	mlx_loop(vars.mlx);
+	mlx_key_hook(vars.mlx, handle_key_event, &vars);
 	mlx_terminate(vars.mlx);
 	return(EXIT_SUCCESS);
 }

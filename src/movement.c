@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 12:45:59 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/19 20:37:24 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/19 20:45:45 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,12 @@ void	handle_key_event(mlx_key_data_t keydata, void *param)
 
 void	move_player(t_vars *vars, t_map_data *map, mlx_key_data_t keydata)
 {
-	while (!(map->map[vars->player_y + 1][vars->player_x] == '1'))
-	{
-		if (keydata.key == MLX_KEY_W && keydata.action == MLX_RELEASE)
-		vars->player_y -= PIXEL_SPACING;	
-	}
+	// int new_x = vars->player_x;
+	(void) map;
+    int new_y = vars->player_y;
+
+    if (keydata.key == MLX_KEY_W && keydata.action == MLX_RELEASE)
+    {
+        new_y -= 1;
+    }
 }
