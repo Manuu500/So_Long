@@ -59,5 +59,6 @@
   "files.associations": {
     "stdlib.h": "c",
     "so_long.h": "c"
-  }
+  },
+  "cmake.sourceDirectory": "/home/mruiz-ur/So_Long/libs/MLX42"
 }

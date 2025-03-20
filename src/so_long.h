@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/19 20:34:19 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:14:41 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,22 @@
 # define HEIGHT 600
 # define PIXEL_SPACING 20
 
+typedef struct	s_vars {
+	void	*mlx;
+	mlx_image_t	*image;
+	int	player_x;
+	int	player_y;
+	mlx_key_data_t keydata;
+}				t_vars;
+
 typedef struct	s_map_data {
 	char **map;
 	int	width;
 	int	height;
 	int	offset_x;
 	int offset_y;
+	t_vars vars;
 }				t_map_data;
-
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-	mlx_image_t	*image;
-	int	player_x;
-	int	player_y;
-	t_map_data *map;
-
-}				t_vars;
 
 // typedef struct	s_data {
 // 	void	*img;
@@ -56,7 +55,7 @@ void	loop_functions(void	*param);
 void	ft_error();
 void	check_image(mlx_image_t *image);
 void	load_protagonist(t_vars *vars, int x, int y);
-void	move_player(t_vars *vars, t_map_data *map, mlx_key_data_t keydata);
+void    move_player(t_vars *vars, t_map_data *map, int map_x, int map_y);
 // void	key_hooks(mlx_key_data_t keydata, void *param);
 void	handle_key_event(mlx_key_data_t keydata, void *param);
 void	load_background(t_vars *vars);
@@ -64,5 +63,7 @@ void	load_background(t_vars *vars);
 void    read_map(const char *file, t_map_data *map);
 void    process_map(t_map_data *mapping, int width, int height, t_vars *vars);
 void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y);
+void	print_vars(t_vars *vars, t_map_data *map);
+void	draw_map(t_vars *vars, t_map_data *map);
 
 #endif
