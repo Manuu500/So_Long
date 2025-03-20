@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 12:45:59 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/20 19:32:03 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:50:33 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,24 @@ void	handle_key_event(mlx_key_data_t keydata, void *param)
 }
 
 void    move_player(t_vars *vars, t_map_data *map, int map_x, int map_y)
-{    
+{
+    int i;
+
+    i = 0;
     if (!(map->map[map_y - 1][map_x] == '1') && vars->keydata.key == MLX_KEY_W)
     {
         if (map->map[map_y - 1][map_x] == 'C')
         {
-            mlx_delete_image(vars->mlx, vars->coin);
-            mlx_delete_image(vars->mlx, vars->image);
+            while (i < vars->num_coins)
+            {
+                if (vars->coins[i] && vars->coins[i]->instances[0].y == vars->player_y)
+                {
+                    mlx_delete_image(vars->mlx, vars->coins[i]);
+                    vars->coins[i] = NULL;
+                    break;
+                }
+                i++;
+            }
             vars->player_y -= PIXEL_SPACING;
             load_protagonist(vars, vars->player_x, vars->player_y);
         }
@@ -57,7 +68,6 @@ void    move_player(t_vars *vars, t_map_data *map, int map_x, int map_y)
     {
         if (map->map[map_y + 1][map_x] == 'C')
         {
-            mlx_delete_image(vars->mlx, vars->coin);
             mlx_delete_image(vars->mlx, vars->image);
             vars->player_y += PIXEL_SPACING;
             load_protagonist(vars, vars->player_x, vars->player_y);
@@ -73,7 +83,6 @@ void    move_player(t_vars *vars, t_map_data *map, int map_x, int map_y)
     {
         if (map->map[map_y][map_x - 1] == 'C')
         {
-            mlx_delete_image(vars->mlx, vars->coin);
             mlx_delete_image(vars->mlx, vars->image);
             vars->player_x -= PIXEL_SPACING;
             load_protagonist(vars, vars->player_x, vars->player_y);
@@ -89,7 +98,6 @@ void    move_player(t_vars *vars, t_map_data *map, int map_x, int map_y)
     {
         if (map->map[map_y][map_x + 1] == 'C')
         {
-            mlx_delete_image(vars->mlx, vars->coin);
             mlx_delete_image(vars->mlx, vars->image);
             vars->player_x += PIXEL_SPACING;
             load_protagonist(vars, vars->player_x, vars->player_y);

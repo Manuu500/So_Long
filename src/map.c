@@ -6,18 +6,11 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/20 19:27:55 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:40:18 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// static int is_wall(t_map_data *mapping, int x, int y)
-// {
-//     if (x < 0 || x >= mapping->width || y < 0 || y >= mapping->height)
-//         return 1; // Consider out-of-bounds as walls
-//     return (mapping->map[y][x] == '1');
-// }
 
 void read_map(const char *file, t_map_data *mapping)
 {
@@ -91,10 +84,12 @@ void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
     {
         texture = mlx_load_png("textures/box.png");
         image = mlx_texture_to_image(vars->mlx, texture);
-        vars->coin = image;
         mlx_resize_image(image, 21, 21);
         mlx_image_to_window(vars->mlx, image, x * PIXEL_SPACING + mapping->offset_x, y * PIXEL_SPACING + mapping->offset_y);
         mlx_delete_texture(texture);
+
+        vars->coins[vars->num_coins] = image;
+        vars->num_coins++;
     }
     else if(mapping->map[y][x] == 'P'){
         load_protagonist(vars, x * PIXEL_SPACING + mapping->offset_x, y * PIXEL_SPACING + mapping->offset_y);
