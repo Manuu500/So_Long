@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 12:45:59 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/20 19:50:33 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/24 13:16:46 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,25 @@ void	handle_key_event(mlx_key_data_t keydata, void *param)
         move_player(vars, map, map_x, map_y);
 }
 
-void    move_player(t_vars *vars, t_map_data *map, int map_x, int map_y)
+int    move_player(t_vars *vars, t_map_data *map, int map_x, int map_y)
 {
+    int counter;
     int i;
 
+    counter = 0;
     i = 0;
     if (!(map->map[map_y - 1][map_x] == '1') && vars->keydata.key == MLX_KEY_W)
     {
-        if (map->map[map_y - 1][map_x] == 'C')
+        if (map->map[map_y][map_x] == 'C' )
         {
-            while (i < vars->num_coins)
+            while (i <= vars->num_coins)
             {
-                if (vars->coins[i] && vars->coins[i]->instances[0].y == vars->player_y)
+                if (vars->coins[i] && vars->coins[i]->instances[0].y == vars->player_y
+                    && vars->coins[i]->instances[0].x == vars->player_x)
                 {
+                    counter++;
                     mlx_delete_image(vars->mlx, vars->coins[i]);
+                    mlx_delete_image(vars->mlx, vars->image);
                     vars->coins[i] = NULL;
                     break;
                 }
@@ -66,9 +71,21 @@ void    move_player(t_vars *vars, t_map_data *map, int map_x, int map_y)
     }
     if (!(map->map[map_y + 1][map_x] == '1') && vars->keydata.key == MLX_KEY_S)
     {
-        if (map->map[map_y + 1][map_x] == 'C')
+        if (map->map[map_y][map_x] == 'C' )
         {
-            mlx_delete_image(vars->mlx, vars->image);
+            while (i <= vars->num_coins)
+            {
+                if (vars->coins[i] && vars->coins[i]->instances[0].y == vars->player_y
+                    && vars->coins[i]->instances[0].x == vars->player_x)
+                {
+                    counter++;
+                    mlx_delete_image(vars->mlx, vars->coins[i]);
+                    mlx_delete_image(vars->mlx, vars->image);
+                    vars->coins[i] = NULL;
+                    break;
+                }
+                i++;
+            }
             vars->player_y += PIXEL_SPACING;
             load_protagonist(vars, vars->player_x, vars->player_y);
         }
@@ -81,9 +98,21 @@ void    move_player(t_vars *vars, t_map_data *map, int map_x, int map_y)
     }
     if (!(map->map[map_y][map_x - 1] == '1') && vars->keydata.key == MLX_KEY_A)
     {
-        if (map->map[map_y][map_x - 1] == 'C')
+        if (map->map[map_y][map_x] == 'C' )
         {
-            mlx_delete_image(vars->mlx, vars->image);
+            while (i <= vars->num_coins)
+            {
+                if (vars->coins[i] && vars->coins[i]->instances[0].y == vars->player_y
+                    && vars->coins[i]->instances[0].x == vars->player_x)
+                {
+                    counter++;
+                    mlx_delete_image(vars->mlx, vars->coins[i]);
+                    mlx_delete_image(vars->mlx, vars->image);
+                    vars->coins[i] = NULL;
+                    break;
+                }
+                i++;
+            }
             vars->player_x -= PIXEL_SPACING;
             load_protagonist(vars, vars->player_x, vars->player_y);
         }
@@ -96,17 +125,29 @@ void    move_player(t_vars *vars, t_map_data *map, int map_x, int map_y)
     }
     if (!(map->map[map_y][map_x + 1] == '1') && vars->keydata.key == MLX_KEY_D)
     {
-        if (map->map[map_y][map_x + 1] == 'C')
+        if (map->map[map_y][map_x] == 'C' )
         {
-            mlx_delete_image(vars->mlx, vars->image);
-            vars->player_x += PIXEL_SPACING;
+            while (i <= vars->num_coins)
+            {
+                if (vars->coins[i] && vars->coins[i]->instances[0].y == vars->player_y
+                    && vars->coins[i]->instances[0].x == vars->player_x)
+                {
+                    counter++;
+                    mlx_delete_image(vars->mlx, vars->coins[i]);
+                    mlx_delete_image(vars->mlx, vars->image);
+                    vars->coins[i] = NULL;
+                    break;
+                }
+                i++;
+            }
+            vars->player_y += PIXEL_SPACING;
             load_protagonist(vars, vars->player_x, vars->player_y);
         }
         else
         {
             mlx_delete_image(vars->mlx, vars->image);
             vars->player_x += PIXEL_SPACING;
-            load_protagonist(vars, vars->player_x, vars->player_y);   
+           load_protagonist(vars, vars->player_x, vars->player_y);   
         }
     }
 }

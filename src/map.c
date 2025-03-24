@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/20 19:40:18 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/24 12:59:03 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
         mlx_resize_image(image, 21, 21);
         mlx_image_to_window(vars->mlx, image, x * PIXEL_SPACING + mapping->offset_x, y * PIXEL_SPACING + mapping->offset_y);
         mlx_delete_texture(texture);
-
         vars->coins[vars->num_coins] = image;
         vars->num_coins++;
     }

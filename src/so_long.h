@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/20 19:58:41 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/24 13:16:00 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_vars {
 	void	*mlx;
 	mlx_image_t	*image;
 	mlx_image_t **coins;
+	// mlx_image_t	*coin;
 	int	num_coins;
 	int	player_x;
 	int	player_y;
@@ -58,7 +59,7 @@ void	loop_functions(void	*param);
 void	ft_error();
 void	check_image(mlx_image_t *image);
 void	load_protagonist(t_vars *vars, int x, int y);
-void    move_player(t_vars *vars, t_map_data *map, int map_x, int map_y);
+int    move_player(t_vars *vars, t_map_data *map, int map_x, int map_y);
 // void	key_hooks(mlx_key_data_t keydata, void *param);
 void	handle_key_event(mlx_key_data_t keydata, void *param);
 void	load_background(t_vars *vars);
