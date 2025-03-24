@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 12:45:59 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/24 15:29:03 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/24 15:37:22 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,42 +35,49 @@ void	handle_key_event(mlx_key_data_t keydata, void *param)
         move_player(vars, map, map_x, map_y);
 }
 
+void    do_move(t_vars *vars, char pos, char op){
+    if (pos == 'y'){
+        mlx_delete_image(vars->mlx, vars->image);
+        if (op == '-')
+            vars->player_y -= PIXEL_SPACING;
+        else if (op == '+')
+            vars->player_y += PIXEL_SPACING;
+        load_protagonist(vars, vars->player_x, vars->player_y);
+    }
+    if (pos == 'x'){
+        mlx_delete_image(vars->mlx, vars->image);
+        if (op == '-')
+            vars->player_x -= PIXEL_SPACING;
+        else if (op == '+')
+            vars->player_x += PIXEL_SPACING;
+        load_protagonist(vars, vars->player_x, vars->player_y);
+    }
+}
+
 void    move_player(t_vars *vars, t_map_data *map, int map_x, int map_y)
 {
     int counter;
-    int i;
-
+    
     counter = 0;
-    i = 0;
     if (!(map->map[map_y - 1][map_x] == '1') && vars->keydata.key == MLX_KEY_W)
     {
         check_coin(vars, map, map_x, map_y);
-        mlx_delete_image(vars->mlx, vars->image);
-        vars->player_y -= PIXEL_SPACING;
-        load_protagonist(vars, vars->player_x, vars->player_y);
+        do_move(vars, 'y', '-');
     }
     else if (!(map->map[map_y + 1][map_x] == '1') && vars->keydata.key == MLX_KEY_S)
     {
         check_coin(vars, map, map_x, map_y);
-        mlx_delete_image(vars->mlx, vars->image);
-        vars->player_y += PIXEL_SPACING;
-        load_protagonist(vars, vars->player_x, vars->player_y);  
-    
+        do_move(vars, 'y', '+');
     }
     else if (!(map->map[map_y][map_x - 1] == '1') && vars->keydata.key == MLX_KEY_A)
     {
         check_coin(vars, map, map_x, map_y);
-        mlx_delete_image(vars->mlx, vars->image);
-        vars->player_x -= PIXEL_SPACING;
-        load_protagonist(vars, vars->player_x, vars->player_y);
-        
+        do_move(vars, 'x', '-');   
     }
     else if (!(map->map[map_y][map_x + 1] == '1') && vars->keydata.key == MLX_KEY_D)
     {
         check_coin(vars, map, map_x, map_y);
-        mlx_delete_image(vars->mlx, vars->image);
-        vars->player_x += PIXEL_SPACING;
-        load_protagonist(vars, vars->player_x, vars->player_y);   
+        do_move(vars, 'x', '+');
     }
 }
 void    check_coin(t_vars *vars, t_map_data *map, int map_x, int map_y)
