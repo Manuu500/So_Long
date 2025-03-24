@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/24 13:16:00 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/24 15:09:21 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,15 @@ void	loop_functions(void	*param);
 void	ft_error();
 void	check_image(mlx_image_t *image);
 void	load_protagonist(t_vars *vars, int x, int y);
-int    move_player(t_vars *vars, t_map_data *map, int map_x, int map_y);
-// void	key_hooks(mlx_key_data_t keydata, void *param);
+void    move_player(t_vars *vars, t_map_data *map, int map_x, int map_y);
 void	handle_key_event(mlx_key_data_t keydata, void *param);
 void	load_background(t_vars *vars);
-// void	move_player(t_map_data *mapping, t_vars *vars, int new_x, int new_y);
 void    read_map(const char *file, t_map_data *map);
 void    process_map(t_map_data *mapping, int width, int height, t_vars *vars);
 void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y);
 void	print_vars(t_vars *vars, t_map_data *map);
 void	draw_map(t_vars *vars, t_map_data *map);
+int    pick_coin(t_vars *vars);
+void    check_coin(t_vars *vars, t_map_data *map, int map_x, int map_y);
 
 #endif
