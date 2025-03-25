@@ -6,20 +6,11 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 18:33:39 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/25 15:47:18 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:45:20 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// void check_image(mlx_image_t *image)
-// {
-//     if (!image)
-//         ft_error();
-//     if ((image->width < 0 || image->width > WIDTH)
-//             || image->height < 0 || image->height > HEIGHT)
-//         ft_error();
-// }
 
 void	load_protagonist(t_vars *vars, int x, int y)
 {
@@ -65,4 +56,18 @@ void	load_background(t_vars *vars)
 		y += texture->height;
 	}
 	mlx_delete_texture(texture);
+}
+
+
+void	place_exit(t_vars *vars, t_map_data *map, int x, int y)
+{
+	mlx_texture_t *texture;
+	mlx_image_t *image;
+	
+	texture = mlx_load_png("textures/gatico.png");
+	image = mlx_texture_to_image(vars->mlx, texture); 
+	mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
+	mlx_image_to_window(vars->mlx, image, x * IMAGE_SIZE + map->offset_x , y * IMAGE_SIZE + map->offset_y);
+	mlx_delete_texture(texture);
+	// go_to_exit(vars, map, x, y);
 }

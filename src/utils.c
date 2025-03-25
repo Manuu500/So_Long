@@ -6,19 +6,21 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:13:01 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/25 15:50:13 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:50:31 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	put_exit(t_vars *vars, t_map_data *map)
+void	check_exit(t_vars *vars, t_map_data *map, int map_x, int map_y)
 {
 	int	x;
 	int	y;
 
 	x = 0;
 	y = 0;
+	(void) map_x;
+	(void) map_y;
 	if (vars->coin_count == 4)
 	{
 		while (y < map->height)
@@ -26,8 +28,10 @@ void	put_exit(t_vars *vars, t_map_data *map)
 			x = 0;
 			while (x < map->width)
 			{
-				if (map->map[y][x] == 'E')
+				if (map->map[y][x] == 'E' )
+				{
 					place_exit(vars, map, x, y);
+				}
 				x++;
 			}	
 			y++;
@@ -35,18 +39,30 @@ void	put_exit(t_vars *vars, t_map_data *map)
 	}
 }
 
-void	place_exit(t_vars *vars, t_map_data *map, int x, int y)
+int	go_to_exit(t_vars *vars, t_map_data *map, int map_x, int map_y)
 {
-	mlx_texture_t *texture;
-	mlx_image_t *image;
-	
-	texture = mlx_load_png("textures/gatico.png");
-	if (!texture)
+	if (vars->coin_count == 4)
 	{
-		printf("No se ha encontardo la textura");
+		if (map->map[map_y - 1][map_x] == 'E' && vars->keydata.key == MLX_KEY_W)
+		{
+			mlx_terminate(vars->mlx);
+			exit(EXIT_SUCCESS);
+		}
+		if (map->map[map_y + 1][map_x] == 'E' && vars->keydata.key == MLX_KEY_S)
+		{
+			mlx_terminate(vars->mlx);
+			exit(EXIT_SUCCESS);
+		}
+		if (map->map[map_y][map_x - 1] == 'E' && vars->keydata.key == MLX_KEY_A)
+		{
+			mlx_terminate(vars->mlx);
+			exit(EXIT_SUCCESS);
+		}
+		if (map->map[map_y][map_x + 1] == 'E' && vars->keydata.key == MLX_KEY_D)
+		{
+			mlx_terminate(vars->mlx);
+			exit(EXIT_SUCCESS);
+		}
 	}
-	image = mlx_texture_to_image(vars->mlx, texture); 
-	mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
-	mlx_image_to_window(vars->mlx, image, x * IMAGE_SIZE + map->offset_x , y * IMAGE_SIZE + map->offset_y);
-	mlx_delete_texture(texture);
+	return (0);
 }

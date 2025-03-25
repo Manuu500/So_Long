@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/25 15:51:45 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:25:57 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <fcntl.h>
 # define WIDTH 1920
 # define HEIGHT 1080
-# define IMAGE_SIZE 61
+# define IMAGE_SIZE 60
 # define PIXEL_SPACING 20
 # define MAX_COINS 4
 
@@ -69,9 +69,11 @@ void    process_map(t_map_data *mapping, int width, int height, t_vars *vars);
 void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y);
 void	print_vars(t_vars *vars, t_map_data *map);
 void	draw_map(t_vars *vars, t_map_data *map);
-int    pick_coin(t_vars *vars);
+void    pick_coin(t_vars *vars);
 int    check_coin(t_vars *vars, t_map_data *map, int map_x, int map_y);
-void	put_exit(t_vars *vars, t_map_data *map);
+// void	put_exit(t_vars *vars, t_map_data *map);
 void	place_exit(t_vars *vars, t_map_data *map, int x, int y);
+void	check_exit(t_vars *vars, t_map_data *map, int map_x, int map_y);
+int	go_to_exit(t_vars *vars, t_map_data *map, int map_x, int map_y);
 
 #endif
