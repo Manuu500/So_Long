@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/24 12:59:03 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:52:51 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void    process_map(t_map_data *mapping, int width, int height, t_vars *vars)
     y = 0;
     if (width > mapping->width || height > mapping->height)
         return;
-    mapping->offset_x = (WIDTH - (width * 20)) / 2;
-    mapping->offset_y = (HEIGHT - (height * 20)) / 2;
+    mapping->offset_x = (WIDTH - (width * IMAGE_SIZE)) / 2;
+    mapping->offset_y = (HEIGHT - (height * IMAGE_SIZE)) / 2;
     while (y < mapping->height)
     {
         x = 0;
@@ -76,24 +76,25 @@ void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
 	{
 		texture = mlx_load_png("textures/pared.png");
 		image = mlx_texture_to_image(vars->mlx, texture); 
-		mlx_resize_image(image, 21, 21);
-		mlx_image_to_window(vars->mlx, image, x * PIXEL_SPACING + mapping->offset_x , y * PIXEL_SPACING + mapping->offset_y);
+		mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
+		mlx_image_to_window(vars->mlx, image, x * IMAGE_SIZE + mapping->offset_x , y * IMAGE_SIZE + mapping->offset_y);
 		mlx_delete_texture(texture);
 	}
     else if (mapping->map[y][x] == 'C')
     {
         texture = mlx_load_png("textures/box.png");
         image = mlx_texture_to_image(vars->mlx, texture);
-        mlx_resize_image(image, 21, 21);
-        mlx_image_to_window(vars->mlx, image, x * PIXEL_SPACING + mapping->offset_x, y * PIXEL_SPACING + mapping->offset_y);
+        mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
+        mlx_image_to_window(vars->mlx, image, x * IMAGE_SIZE + mapping->offset_x, y * IMAGE_SIZE + mapping->offset_y);
         mlx_delete_texture(texture);
         vars->coins[vars->num_coins] = image;
         vars->num_coins++;
     }
-    else if(mapping->map[y][x] == 'P'){
-        load_protagonist(vars, x * PIXEL_SPACING + mapping->offset_x, y * PIXEL_SPACING + mapping->offset_y);
-        vars->player_x = x * PIXEL_SPACING + mapping->offset_x;
-        vars->player_y = y * PIXEL_SPACING + mapping->offset_y;
+    else if(mapping->map[y][x] == 'P')
+    {
+        load_protagonist(vars, x * IMAGE_SIZE + mapping->offset_x, y * IMAGE_SIZE + mapping->offset_y);
+        vars->player_x = x * IMAGE_SIZE + mapping->offset_x;
+        vars->player_y = y * IMAGE_SIZE + mapping->offset_y;
     }
 }
 

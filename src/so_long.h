@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/24 15:09:21 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:51:45 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 # include <unistd.h>
 # include <memory.h>
 # include <fcntl.h>
-# define WIDTH 1200
-# define HEIGHT 600
+# define WIDTH 1920
+# define HEIGHT 1080
+# define IMAGE_SIZE 61
 # define PIXEL_SPACING 20
 # define MAX_COINS 4
 
@@ -30,6 +31,7 @@ typedef struct	s_vars {
 	mlx_image_t **coins;
 	// mlx_image_t	*coin;
 	int	num_coins;
+	int coin_count;
 	int	player_x;
 	int	player_y;
 	mlx_key_data_t keydata;
@@ -68,6 +70,8 @@ void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y);
 void	print_vars(t_vars *vars, t_map_data *map);
 void	draw_map(t_vars *vars, t_map_data *map);
 int    pick_coin(t_vars *vars);
-void    check_coin(t_vars *vars, t_map_data *map, int map_x, int map_y);
+int    check_coin(t_vars *vars, t_map_data *map, int map_x, int map_y);
+void	put_exit(t_vars *vars, t_map_data *map);
+void	place_exit(t_vars *vars, t_map_data *map, int x, int y);
 
 #endif

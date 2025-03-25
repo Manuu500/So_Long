@@ -18,6 +18,8 @@ SRC :=	src/main.c \
 		src/image.c \
 		src/movement.c \
 		src/map.c \
+		src/utils.c \
+		src/coins.c \
 
 OBJ	= $(patsubst src%, obj%, $(SRC:.c=.o))
 
