@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:14:31 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/25 19:29:59 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/25 20:09:06 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ int    check_coin(t_vars *vars, t_map_data *map, int map_x, int map_y)
     {
 		map->map[map_y][map_x] = '0';
 		mlx_delete_image(vars->mlx, vars->image);
-        pick_coin(vars);
+        // pick_coin(vars);
+		mlx_delete_image(vars->mlx, vars->coins[i]);
+		vars->coins[i] = NULL;
         load_protagonist(vars, vars->player_x, vars->player_y);
         counter++;
-		
-    }
+	}
     return (counter);
 }
 
