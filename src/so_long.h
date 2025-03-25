@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/25 20:28:32 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/25 20:29:26 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct	s_vars {
 	void	*mlx;
 	mlx_image_t	*image;
 	t_coin **coins;
-	// mlx_image_t	*coin;
 	int	num_coins;
 	int coin_count;
 	int	player_x;

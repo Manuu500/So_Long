@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:14:31 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/25 20:26:35 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/25 20:30:01 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int check_coin(t_vars *vars, t_map_data *map, int map_x, int map_y)
     counter = 0;
     if (map->map[map_y][map_x] == 'C')
     {
+		vars->image->instances->enabled = false;
         map->map[map_y][map_x] = '0'; // Actualizar el mapa
         i = 0;
         while (i < vars->num_coins)
