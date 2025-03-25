@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/25 20:08:21 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/25 20:28:32 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,17 @@
 # define PIXEL_SPACING 20
 # define MAX_COINS 4
 
+typedef struct s_coin
+{
+    int map_x;
+    int map_y;
+    mlx_image_t *image;
+} 				t_coin;
+
 typedef struct	s_vars {
 	void	*mlx;
 	mlx_image_t	*image;
-	mlx_image_t **coins;
+	t_coin **coins;
 	// mlx_image_t	*coin;
 	int	num_coins;
 	int coin_count;
@@ -45,15 +52,6 @@ typedef struct	s_map_data {
 	int offset_y;
 	t_vars vars;
 }				t_map_data;
-
-// typedef struct	s_data {
-// 	void	*img;
-// 	char	*addr;
-// 	int		bits_per_pixel;
-// 	int		line_length;
-// 	int		endian;
-// }				t_data;
-
 
 void	close_window(void *param);
 void	print_text(mlx_key_data_t keydata, void *params);

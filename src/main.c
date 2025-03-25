@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 17:07:55 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/20 19:59:05 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/25 20:27:59 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(void)
 	map.vars.coins = malloc(sizeof(mlx_image_t *) * MAX_COINS);
 	if (!map.vars.coins)
 		ft_error();
+	map.vars.coins = malloc(sizeof(t_coin *) * MAX_COINS);
 	map.vars.num_coins = 0;
 	mlx_key_hook(map.vars.mlx, handle_key_event, &map);
 	mlx_loop_hook(map.vars.mlx, loop_functions, &map);
