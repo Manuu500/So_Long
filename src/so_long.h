@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/27 14:47:44 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:55:30 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef struct	s_map_data {
 	int	height;
 	int	offset_x;
 	int offset_y;
+	int	map_x;
+	int	map_y;
 	t_vars vars;
 }				t_map_data;
 
@@ -70,5 +72,6 @@ int    check_coin(t_vars *vars, t_map_data *map, int map_x, int map_y);
 void	place_exit(t_vars *vars, t_map_data *map, int x, int y);
 void	check_exit(t_vars *vars, t_map_data *map, int map_x, int map_y);
 int	go_to_exit(t_vars *vars, t_map_data *map, int map_x, int map_y);
+void	check_image_limit(t_vars *vars, mlx_image_t *image, int x, int y);
 
 #endif

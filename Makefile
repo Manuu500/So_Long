@@ -20,6 +20,7 @@ SRC :=	src/main.c \
 		src/map.c \
 		src/utils.c \
 		src/coins.c \
+		src/error_handle.c \
 
 OBJ	= $(patsubst src%, obj%, $(SRC:.c=.o))
 

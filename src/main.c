@@ -6,16 +6,18 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 17:07:55 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/27 15:21:33 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:03:31 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_error()
-{
-	exit(EXIT_FAILURE);
-}
+#include "so_long.h"
+
+// void	ft_error()
+// {
+// 	exit(EXIT_FAILURE);
+// }
 
 // void	loop_functions(void	*param)
 // {	
