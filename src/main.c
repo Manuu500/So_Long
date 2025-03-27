@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 17:07:55 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/27 16:05:53 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:56:17 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 {
 	t_map_data map;
 	
-	read_map("maps/map.ber", &map);
+	read_map("maps/map2.ber", &map);
 	map.vars.mlx = mlx_init(map.width * IMAGE_SIZE, map.height * IMAGE_SIZE, "So_Long", 0);
 	if (!map.vars.mlx)
 		ft_error();
@@ -27,7 +27,7 @@ int	main(void)
 		free(map.vars.coins);
 	map.vars.num_coins = 0;
 	mlx_key_hook(map.vars.mlx, handle_key_event, &map);
-	load_background(&map.vars);	
+	load_background(&map.vars, &map);	
 	process_map(&map, map.width, map.height, &map.vars);
 	mlx_loop(map.vars.mlx);
 	free(map.vars.coins);

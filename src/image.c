@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 18:33:39 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/27 16:08:46 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:56:35 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,26 @@ void	load_protagonist(t_vars *vars, int x, int y)
 	mlx_delete_texture(texture);
 }
 
-void	load_background(t_vars *vars)
+void	load_background(t_vars *vars, t_map_data *map)
 {
 	mlx_texture_t *texture;
-	mlx_image_t *image;
 	int	x;
 	int	y;
 
 	x = 0;
 	y = 0;
-	image = vars->image;
 	texture = mlx_load_png("textures/hierba.png");
 	if (!texture)
 		ft_error();
-	while (y < HEIGHT)
+	while (y < map->height * IMAGE_SIZE)
 	{
 		x = 0;
-		while (x < WIDTH)
+		while (x < map->width * IMAGE_SIZE)
 		{
-			image = mlx_texture_to_image(vars->mlx, texture);
-			if (!image)
+			vars->image = mlx_texture_to_image(vars->mlx, texture);
+			if (!vars->image)
 				ft_error();
-			if (mlx_image_to_window(vars->mlx, image, x, y) < 0)
+			if (mlx_image_to_window(vars->mlx, vars->image, x, y) < 0)
 				ft_error();
 			x += texture->width;
 		}
@@ -59,17 +57,14 @@ void	load_background(t_vars *vars)
 }
 
 
-void	place_exit(t_vars *vars, t_map_data *map, int x, int y)
+void	place_exit(t_vars *vars, t_map_data *map)
 {
 	mlx_texture_t *texture;
 	mlx_image_t *image;
 	
-	(void) x;
-	(void) y;
 	texture = mlx_load_png("textures/gatico.png");
 	image = mlx_texture_to_image(vars->mlx, texture); 
 	mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
 	mlx_image_to_window(vars->mlx, image, map->map_x * IMAGE_SIZE , map->map_y * IMAGE_SIZE);
 	mlx_delete_texture(texture);
-	// go_to_exit(vars, map, x, y);
 }

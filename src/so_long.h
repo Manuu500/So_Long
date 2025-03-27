@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/27 15:55:30 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:56:10 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <unistd.h>
 # include <memory.h>
 # include <fcntl.h>
-# define WIDTH 1920
-# define HEIGHT 1080
+// # define WIDTH 1920
+// # define HEIGHT 1080
 # define IMAGE_SIZE 60
 # define PIXEL_SPACING 20
 # define MAX_COINS 4
@@ -61,7 +61,7 @@ void	check_image(mlx_image_t *image);
 void	load_protagonist(t_vars *vars, int x, int y);
 void    move_player(t_vars *vars, t_map_data *map, int map_x, int map_y);
 void	handle_key_event(mlx_key_data_t keydata, void *param);
-void	load_background(t_vars *vars);
+void	load_background(t_vars *vars, t_map_data *map);
 void    read_map(const char *file, t_map_data *map);
 void    process_map(t_map_data *mapping, int width, int height, t_vars *vars);
 void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y);
@@ -69,7 +69,7 @@ void	print_vars(t_vars *vars, t_map_data *map);
 void	draw_map(t_vars *vars, t_map_data *map);
 void    pick_coin(t_vars *vars);
 int    check_coin(t_vars *vars, t_map_data *map, int map_x, int map_y);
-void	place_exit(t_vars *vars, t_map_data *map, int x, int y);
+void	place_exit(t_vars *vars, t_map_data *map);
 void	check_exit(t_vars *vars, t_map_data *map, int map_x, int map_y);
 int	go_to_exit(t_vars *vars, t_map_data *map, int map_x, int map_y);
 void	check_image_limit(t_vars *vars, mlx_image_t *image, int x, int y);

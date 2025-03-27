@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:13:01 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/27 16:07:48 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:11:32 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	check_exit(t_vars *vars, t_map_data *map, int map_x, int map_y)
 			while (x < map->width)
 			{
 				if (map->map[y][x] == 'E' )
-					place_exit(vars, map, x, y);
+					place_exit(vars, map);
 				x++;
 			}	
 			y++;
