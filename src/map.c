@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/27 16:12:12 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/27 17:31:49 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,8 @@ void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
         vars->coins[vars->num_coins]->map_x = x;
         vars->coins[vars->num_coins]->map_y = y;
         vars->coins[vars->num_coins]->image = image;
-
-        printf("Coordenadas de la moneda (mapa): %d, %d\n", x, y);
         vars->num_coins++;
+        check_coin_sur(mapping, x, y);
     }
     else if(mapping->map[y][x] == 'P')
     {
