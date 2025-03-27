@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/27 16:02:08 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:09:47 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,11 @@ void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
         load_protagonist(vars, x * IMAGE_SIZE, y * IMAGE_SIZE);
         vars->player_x = x * IMAGE_SIZE;
         vars->player_y = y * IMAGE_SIZE;
+    }
+    else if(mapping->map[y][x] == 'E')
+    {
+        mapping->map_x = x;
+        mapping->map_y = y;
     }
 }
 

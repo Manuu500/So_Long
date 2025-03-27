@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 18:33:39 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/27 16:02:35 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:08:46 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,12 @@ void	place_exit(t_vars *vars, t_map_data *map, int x, int y)
 	mlx_texture_t *texture;
 	mlx_image_t *image;
 	
+	(void) x;
+	(void) y;
 	texture = mlx_load_png("textures/gatico.png");
 	image = mlx_texture_to_image(vars->mlx, texture); 
 	mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
-	mlx_image_to_window(vars->mlx, image, x * IMAGE_SIZE + map->offset_x , y * IMAGE_SIZE + map->offset_y);
+	mlx_image_to_window(vars->mlx, image, map->map_x * IMAGE_SIZE , map->map_y * IMAGE_SIZE);
 	mlx_delete_texture(texture);
 	// go_to_exit(vars, map, x, y);
 }
