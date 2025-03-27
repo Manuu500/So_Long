@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/27 17:31:49 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/27 18:00:00 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,7 @@ void    process_map(t_map_data *mapping, int width, int height, t_vars *vars)
     (void) width;
     y = 0;
     if (width > mapping->width || height > mapping->height)
-        return;
-    // mapping->offset_x = (WIDTH - (width * IMAGE_SIZE)) / 2;
-    // mapping->offset_y = (HEIGHT - (height * IMAGE_SIZE)) / 2;
+        return;;
     while (y < mapping->height)
     {
         x = 0;
@@ -74,6 +72,7 @@ void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
         return;
     if (mapping->map[y][x] == '1')
 	{
+        // check_limits(mapping, x, y);
 		texture = mlx_load_png("textures/pared.png");
 		image = mlx_texture_to_image(vars->mlx, texture); 
 		mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
@@ -82,6 +81,7 @@ void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
 	}
     else if (mapping->map[y][x] == 'C')
     {
+        // check_coin_sur(mapping, x, y);
         texture = mlx_load_png("textures/box.png");
         image = mlx_texture_to_image(vars->mlx, texture);
         mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
@@ -92,7 +92,6 @@ void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
         vars->coins[vars->num_coins]->map_y = y;
         vars->coins[vars->num_coins]->image = image;
         vars->num_coins++;
-        check_coin_sur(mapping, x, y);
     }
     else if(mapping->map[y][x] == 'P')
     {
