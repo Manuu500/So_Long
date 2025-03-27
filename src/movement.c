@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 12:45:59 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/25 20:08:44 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/27 14:47:06 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	handle_key_event(mlx_key_data_t keydata, void *param)
         move_player(vars, map, map_x, map_y);
     if (keydata.key == MLX_KEY_D && keydata.action == MLX_RELEASE)
         move_player(vars, map, map_x, map_y);
+    if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE)
+        mlx_close_window(vars->mlx);
 }
 
 void    do_move(t_vars *vars, char pos, char op)

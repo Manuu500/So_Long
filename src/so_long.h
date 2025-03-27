@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/25 20:29:26 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/27 14:47:44 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ typedef struct	s_map_data {
 	t_vars vars;
 }				t_map_data;
 
-void	close_window(void *param);
 void	print_text(mlx_key_data_t keydata, void *params);
 void	loop_functions(void	*param);
 void	ft_error();
@@ -68,7 +67,6 @@ void	print_vars(t_vars *vars, t_map_data *map);
 void	draw_map(t_vars *vars, t_map_data *map);
 void    pick_coin(t_vars *vars);
 int    check_coin(t_vars *vars, t_map_data *map, int map_x, int map_y);
-// void	put_exit(t_vars *vars, t_map_data *map);
 void	place_exit(t_vars *vars, t_map_data *map, int x, int y);
 void	check_exit(t_vars *vars, t_map_data *map, int map_x, int map_y);
 int	go_to_exit(t_vars *vars, t_map_data *map, int map_x, int map_y);

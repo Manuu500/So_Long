@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/25 20:23:56 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:22:38 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void    process_map(t_map_data *mapping, int width, int height, t_vars *vars)
     y = 0;
     if (width > mapping->width || height > mapping->height)
         return;
-    mapping->offset_x = (WIDTH - (width * IMAGE_SIZE)) / 2;
-    mapping->offset_y = (HEIGHT - (height * IMAGE_SIZE)) / 2;
+    // mapping->offset_x = (WIDTH - (width * IMAGE_SIZE)) / 2;
+    // mapping->offset_y = (HEIGHT - (height * IMAGE_SIZE)) / 2;
     while (y < mapping->height)
     {
         x = 0;
@@ -85,7 +85,7 @@ void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
         texture = mlx_load_png("textures/box.png");
         image = mlx_texture_to_image(vars->mlx, texture);
         mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
-        mlx_image_to_window(vars->mlx, image, x * IMAGE_SIZE + mapping->offset_x, y * IMAGE_SIZE + mapping->offset_y);
+        mlx_image_to_window(vars->mlx, image, x * IMAGE_SIZE, y * IMAGE_SIZE);
         mlx_delete_texture(texture);
         vars->coins[vars->num_coins] = malloc(sizeof(t_coin));
         vars->coins[vars->num_coins]->map_x = x; // Coordenada X del mapa
@@ -97,9 +97,9 @@ void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
     }
     else if(mapping->map[y][x] == 'P')
     {
-        load_protagonist(vars, x * IMAGE_SIZE + mapping->offset_x, y * IMAGE_SIZE + mapping->offset_y);
-        vars->player_x = x * IMAGE_SIZE + mapping->offset_x;
-        vars->player_y = y * IMAGE_SIZE + mapping->offset_y;
+        load_protagonist(vars, x * IMAGE_SIZE, y * IMAGE_SIZE);
+        vars->player_x = x * IMAGE_SIZE;
+        vars->player_y = y * IMAGE_SIZE;
     }
 }
 

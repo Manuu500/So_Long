@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 17:07:55 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/25 20:27:59 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:21:33 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ void	ft_error()
 	exit(EXIT_FAILURE);
 }
 
-void	loop_functions(void	*param)
-{	
-	close_window(param);
-}
+// void	loop_functions(void	*param)
+// {	
+// 	close_window(param);
+// }
 
 int	main(void)
 {
 	t_map_data map;
 	
 	read_map("maps/map.ber", &map);
-	map.vars.mlx = mlx_init(WIDTH, HEIGHT, "So_Long", 0);
+	map.vars.mlx = mlx_init(map.width * IMAGE_SIZE, map.height * IMAGE_SIZE, "So_Long", 0);
 	if (!map.vars.mlx)
 		ft_error();
 	map.vars.coins = malloc(sizeof(mlx_image_t *) * MAX_COINS);
@@ -36,7 +36,6 @@ int	main(void)
 	map.vars.coins = malloc(sizeof(t_coin *) * MAX_COINS);
 	map.vars.num_coins = 0;
 	mlx_key_hook(map.vars.mlx, handle_key_event, &map);
-	mlx_loop_hook(map.vars.mlx, loop_functions, &map);
 	load_background(&map.vars);	
 	process_map(&map, map.width, map.height, &map.vars);
 	mlx_loop(map.vars.mlx);
