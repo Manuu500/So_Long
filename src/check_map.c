@@ -6,11 +6,26 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:05:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/31 17:46:29 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/31 18:35:13 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static int	check_duplicate(t_map_data *map)
+{
+	int	e_count;
+	int	p_count;
+	int	c_count;
+	
+	read_matrix(map, &p_count, &c_count, &e_count);
+	printf("Numero personajes: %d, Numero salidas: %d, Numero monedas: %d", p_count, e_count, c_count);
+	if ((p_count > 1 || e_count > 1) || (p_count < 1 ||
+		e_count < 1 || c_count < 1))
+		return (0);
+	return (1);
+}
+
 static int	check_map_extension(char	*filename)
 {
 	char	*word;
@@ -56,6 +71,11 @@ void	check_map(t_map_data *map)
 	if (!check_map_extension(map->map_name))
 	{
 		perror("El nombre del archivo no es un .ber");
+		exit(EXIT_FAILURE);
+	}
+	if (!check_duplicate(map))
+	{
+		perror("Hay duplicados");
 		exit(EXIT_FAILURE);
 	}
 }

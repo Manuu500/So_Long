@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/31 17:28:56 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/31 18:31:20 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ void	check_coin_sur(t_map_data *map, int	x,	int y);
 void	check_limits(t_map_data *map, int x, int y);
 void	check_flood(char **map);
 void	check_map(t_map_data *map);
+void	read_matrix(t_map_data *map, int *p_count, int *c_count, int *e_count);
 
 #endif

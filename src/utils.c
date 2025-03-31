@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:13:01 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/27 16:11:32 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/31 18:33:33 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,30 @@ int	go_to_exit(t_vars *vars, t_map_data *map, int map_x, int map_y)
 		}
 	}
 	return (0);
+}
+
+void	read_matrix(t_map_data *map, int *p_count, int *c_count, int *e_count)
+{
+    int	y;
+    int	x;
+
+	*c_count = 0;
+    *p_count = 0;
+    *e_count = 0;
+    y = 0;
+    while (y < map->height)
+    {
+        x = 0;
+        while (x < map->width)
+        {
+            if (map->map[y][x] == 'P')
+                (*p_count)++;
+            else if (map->map[y][x] == 'E')
+                (*e_count)++;
+			else if (map->map[y][x] == 'C')
+				(*c_count)++;
+			x++;
+        }
+        y++;
+    }
 }

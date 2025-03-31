@@ -6,11 +6,9 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 17:07:55 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/31 17:42:59 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/31 18:03:23 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "so_long.h"
 
 #include "so_long.h"
 
@@ -20,7 +18,7 @@ int	main(int arcv, char **argv)
 	
 	(void) arcv;
 	map.map_name = argv[1];
-	read_map(map.map_name, &map);
+	read_map("maps/map2.ber", &map);
 	map.vars.mlx = mlx_init(map.width * IMAGE_SIZE, map.height * IMAGE_SIZE, "So_Long", 0);
 	if (!map.vars.mlx)
 		ft_error();
