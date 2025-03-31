@@ -6,11 +6,22 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:05:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/31 17:25:33 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/31 17:46:29 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+static int	check_map_extension(char	*filename)
+{
+	char	*word;
+	int	file_length;
+
+	file_length = ft_strlen(filename);
+	word = ft_strnstr(filename, ".ber", file_length);
+	if (word == NULL)
+		return (0);
+	return (1);
+}
 
 static int	check_walls(t_map_data *map)
 {
@@ -41,5 +52,10 @@ void	check_map(t_map_data *map)
 	{
 		exit(EXIT_FAILURE);
 		//Despues liberar memoria del mapa
+	}
+	if (!check_map_extension(map->map_name))
+	{
+		perror("El nombre del archivo no es un .ber");
+		exit(EXIT_FAILURE);
 	}
 }

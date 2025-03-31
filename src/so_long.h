@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/31 17:24:01 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/31 17:28:56 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct	s_vars {
 
 typedef struct	s_map_data {
 	char **map;
+	char 	*map_name;
 	int	width;
 	int	height;
 	int	offset_x;
