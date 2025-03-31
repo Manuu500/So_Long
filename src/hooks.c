@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 17:25:43 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/27 16:01:42 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/31 17:15:57 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,6 @@
 //     if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE)
 //         mlx_close_window(vars->mlx);
 // }
+
+
+//        if (ft_strlen(mapping->map[y]) != mapping->width)

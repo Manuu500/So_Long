@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/27 18:00:00 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/31 17:17:08 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void    process_map(t_map_data *mapping, int width, int height, t_vars *vars)
         return;;
     while (y < mapping->height)
     {
+        if (ft_strlen(mapping->map[y]) != mapping->width)
+            exit(EXIT_FAILURE);
         x = 0;
         while (x < mapping->width)
         {

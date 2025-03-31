@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/31 13:31:57 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/03/31 17:24:01 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	check_exit(t_vars *vars, t_map_data *map, int map_x, int map_y);
 int	go_to_exit(t_vars *vars, t_map_data *map, int map_x, int map_y);
 void	check_coin_sur(t_map_data *map, int	x,	int y);
 void	check_limits(t_map_data *map, int x, int y);
+void	check_flood(char **map);
 void	check_map(t_map_data *map);
 
 #endif
