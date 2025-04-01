@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:14:31 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/27 16:06:29 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/01 15:57:43 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,28 @@ int check_coin(t_vars *vars, t_map_data *map, int map_x, int map_y)
     return (counter);
 }
 
-// void    pick_coin(t_vars *vars)
-// {
-//     int i;
-
-//     i = 0;
-//     while (i < vars->num_coins)
-//     {
-//         if (vars->coins[i] && vars->coins[i]->instances[0].y == vars->player_y
-//             && vars->coins[i]->instances[0].x == vars->player_x)
-//         {
-//             mlx_delete_image(vars->mlx, vars->coins[i]);
-//             vars->coins[i] = NULL;
-//         }
-//         i++;
-//     }
-// }
+int    check_coin_surround(t_map_data *map)
+{
+    int y;
+    int x;
+    
+    y = 0;
+    while (y < map->height)
+    {
+        x = 0;
+        while (x < map->width)
+        {
+            if (map->map[y][x] == 'C')
+            {
+                if (map->map[y - 1][x] == '1' &&
+                    map->map[y + 1][x] == '1' &&
+                    map->map[y][x - 1] == '1' &&
+                    map->map[y][x + 1] == '1')
+                    return (0);
+            }
+            x++;
+        }
+        y++;        
+    }
+    return (1);
+}

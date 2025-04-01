@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/03/31 18:31:20 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/01 18:28:34 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@
 # define IMAGE_SIZE 60
 # define PIXEL_SPACING 20
 # define MAX_COINS 4
+typedef struct s_init_vars
+{
+	int	x;
+	int	y;
+}				t_init_vars;
 
 typedef struct s_coin
 {
@@ -40,6 +45,7 @@ typedef struct	s_vars {
 	int coin_count;
 	int	player_x;
 	int	player_y;
+	int	collec_count;
 	mlx_key_data_t keydata;
 }				t_vars;
 
@@ -76,7 +82,10 @@ int	go_to_exit(t_vars *vars, t_map_data *map, int map_x, int map_y);
 void	check_coin_sur(t_map_data *map, int	x,	int y);
 void	check_limits(t_map_data *map, int x, int y);
 void	check_flood(char **map);
-void	check_map(t_map_data *map);
+void	check_map(t_map_data *map, t_init_vars *ivars);
 void	read_matrix(t_map_data *map, int *p_count, int *c_count, int *e_count);
+int    check_coin_surround(t_map_data *map);
+int	check_map_extension(char	*filename);
+void	initialize_var(t_init_vars *ivars);
 
 #endif
