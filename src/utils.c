@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:13:01 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/01 18:27:30 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/01 18:48:50 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ void	read_matrix(t_map_data *map, int *p_count, int *c_count, int *e_count)
     }
 }
 
-void	initialize_var(t_init_vars *ivars)
-{
-	ivars->x = 1;
-	ivars->y = 1;
-}
+// void	initialize_var(t_init_vars *ivars)
+// {
+// 	ivars->x = 1;
+// 	ivars->y = 1;
+// }

@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 17:07:55 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/01 18:20:59 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/01 18:48:37 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int arcv, char **argv)
 {
 	t_map_data map;
-	t_init_vars ivars;
 	
 	(void) arcv;
 	map.map_name = argv[1];
@@ -27,11 +26,11 @@ int	main(int arcv, char **argv)
 	if (!map.vars.coins)
 		free(map.vars.coins);
 	map.vars.num_coins = 0;
-	initialize_var(&ivars);
+	// initialize_var(&ivars);
 	mlx_key_hook(map.vars.mlx, handle_key_event, &map);
 	load_background(&map.vars, &map);	
 	process_map(&map, map.width, map.height, &map.vars);
-	check_map(&map, &ivars);
+	check_map(&map);
 	mlx_loop(map.vars.mlx);
 	free(map.vars.coins);
 	mlx_terminate(map.vars.mlx);
