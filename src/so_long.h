@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/01 18:48:24 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/04 19:01:56 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct	s_vars {
 
 typedef struct	s_map_data {
 	char **map;
+	char	**map_copy;
 	char 	*map_name;
 	int	width;
 	int	height;
@@ -86,6 +87,12 @@ void	check_map(t_map_data *map);
 void	read_matrix(t_map_data *map, int *p_count, int *c_count, int *e_count);
 int    check_coin_surround(t_map_data *map);
 int	check_map_extension(char	*filename);
-// void	initialize_var(t_init_vars *ivars);
+char	**duplicate_map(t_map_data *map, int height);
+void debug_mapa(t_map_data *map);
+void free_duplicate_map(char **map_copy, int height);
+int count_coins(t_map_data *map);
+void	initialize_var(t_map_data *map);
+void free_coins(t_map_data *map);
+void	free_map(char **map, int height);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/01 18:46:46 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/04 19:09:57 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
 		texture = mlx_load_png("textures/pared.png");
 		image = mlx_texture_to_image(vars->mlx, texture); 
 		mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
-		mlx_image_to_window(vars->mlx, image, x * IMAGE_SIZE + mapping->offset_x , y * IMAGE_SIZE + mapping->offset_y);
+		mlx_image_to_window(vars->mlx, image, x * IMAGE_SIZE, y * IMAGE_SIZE);
 		mlx_delete_texture(texture);
 	}
     else if (mapping->map[y][x] == 'C')
@@ -107,4 +107,5 @@ void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
         mapping->map_y = y;
     }
 }
+
 
