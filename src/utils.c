@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:13:01 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/04 19:21:27 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/04 19:50:52 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,31 @@ void	read_matrix(t_map_data *map, int *p_count, int *c_count, int *e_count)
         }
         y++;
     }
+}
+
+char	**duplicate_map(t_map_data *map, int height)
+{
+    int	y;
+    
+    y = 0;
+    map->map_copy = malloc(sizeof(char *) * (height + 1));
+    if (!map->map_copy)
+    {
+        printf("NO SE HA GUARDADO LA COPIA DEL MAPA");
+        exit(EXIT_FAILURE);
+    }
+    while (y < height)
+    {
+        map->map_copy[y] = ft_strdup(map->map[y]);
+        if (!map->map_copy[y])
+        {
+            printf("NO SE HA CARGADO LA FILA EN EL DUPLICADO");
+            exit(EXIT_FAILURE);
+        }
+        y++;
+    }
+    map->map_copy[height] = NULL;
+    return (map->map_copy);
 }
 
 void	initialize_var(t_map_data *map)

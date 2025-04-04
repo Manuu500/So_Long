@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/04 19:33:25 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/04 20:14:02 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct	s_vars {
 	int	player_x;
 	int	player_y;
 	int	collec_count;
+	int all_collec_count;
 	mlx_key_data_t keydata;
 }				t_vars;
 
@@ -94,5 +95,6 @@ int count_coins(t_map_data *map);
 void	initialize_var(t_map_data *map);
 void free_coins(t_map_data *map);
 void	free_map(char **map, int height);
+void	check_num_collec(t_map_data *map, int *count);
 
 #endif

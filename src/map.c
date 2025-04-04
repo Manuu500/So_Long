@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/04 19:09:57 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/04 19:42:13 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void    process_map(t_map_data *mapping, int width, int height, t_vars *vars)
         }
         y++;
     }
+    mapping->map_copy = duplicate_map(mapping, mapping->height);
+    printf("Contenido del mapa: %p\n", mapping->map_copy);
 }
 
 void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
