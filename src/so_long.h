@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 19:47:20 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 21:56:06 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@
 # include <memory.h>
 # include <fcntl.h>
 # define IMAGE_SIZE 60
-# define PIXEL_SPACING 20
-# define MAX_COINS 1000
+# define FAILURE 1
+# define SUCCESS 0
+// # define PIXEL_SPACING 20
+# define MAX_COINS 100
 
 typedef struct s_coords
 {
@@ -67,9 +69,8 @@ typedef struct	s_map_data {
 
 // void	print_text(mlx_key_data_t keydata, void *params);
 void	loop_functions(void	*param);
-void	ft_error();
 void	check_image(mlx_image_t *image);
-void	load_protagonist(t_vars *vars, int x, int y);
+void	load_protagonist(t_map_data *map, int x, int y);
 void    move_player(t_map_data *map, int map_x, int map_y);
 void	handle_key_event(mlx_key_data_t keydata, void *param);
 void	load_background(t_vars *vars, t_map_data *map);
@@ -107,5 +108,6 @@ void	ft_texture_error();
 void	ft_image_error();
 void	clean_close(t_map_data *map);
 void	close_window_x(void	*param);
+void	ft_error(t_map_data *map, char	*error);
 
 #endif

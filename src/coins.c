@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:14:31 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 17:56:08 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 22:01:34 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int check_coin(t_vars *vars, t_map_data *map, int map_x, int map_y)
             if (vars->coins[i] && vars->coins[i]->map_x == map_x
                 && vars->coins[i]->map_y == map_y)
             {
-                // printf("Got the coin and the count is: %d\n", vars->coin_count);
                 mlx_delete_image(vars->mlx, vars->coins[i]->image);
                 free(vars->coins[i]);
                 vars->coins[i] = NULL;
@@ -37,7 +36,7 @@ int check_coin(t_vars *vars, t_map_data *map, int map_x, int map_y)
             }
             i++;
         }
-        load_protagonist(vars, vars->player_x, vars->player_y);
+        load_protagonist(map, vars->player_x, vars->player_y);
         counter++;
     }
     return (counter);

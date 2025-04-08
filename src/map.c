@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 17:31:31 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 21:59:22 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,19 @@ void read_map(const char *file, t_map_data *mapping)
     char    *temp;
     char    *old_line;
 
+    
     line = NULL;
     fd = open(file, O_RDONLY);
     if (fd < 0)
-        exit(EXIT_FAILURE);
-    while ((temp = ft_get_next_line(fd)) != NULL)
+        exit(FAILURE);
+    temp = ft_get_next_line(fd);
+    while (temp != NULL)
     {
         old_line = line;
         line = ft_strjoin(line, temp);
         free(temp);
         free(old_line);
+        temp = ft_get_next_line(fd);
     }
     close (fd);
     mapping->map = ft_split(line, '\n');
@@ -47,7 +50,10 @@ void    process_map(t_map_data *mapping, int width, int height, t_vars *vars)
     while (y < mapping->height)
     {
         if (ft_strlen(mapping->map[y]) != mapping->width)
-            exit(EXIT_FAILURE);
+        {
+            perror("Error\nThe map is not rectangular");
+            clean_close(mapping);
+        }
         x = 0;
         while (x < mapping->width)
         {
@@ -70,7 +76,7 @@ void    place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
         load_coin_image(mapping, x, y);
     else if(mapping->map[y][x] == 'P')
     {
-        load_protagonist(vars, x * IMAGE_SIZE, y * IMAGE_SIZE);
+        load_protagonist(mapping, x * IMAGE_SIZE, y * IMAGE_SIZE);
         vars->player_x = x * IMAGE_SIZE;
         vars->player_y = y * IMAGE_SIZE;
     }

@@ -6,35 +6,35 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 12:45:59 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 16:30:45 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 21:59:06 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    do_move(t_vars *vars, char pos, char op)
+void    do_move(t_map_data *map, char pos, char op)
 {
     if (pos == 'y'){
-        mlx_delete_image(vars->mlx, vars->image);
+        mlx_delete_image(map->vars.mlx, map->vars.image);
         if (op == '-')
-            vars->player_y -= IMAGE_SIZE;
+            map->vars.player_y -= IMAGE_SIZE;
         else if (op == '+')
-            vars->player_y += IMAGE_SIZE;
-        load_protagonist(vars, vars->player_x, vars->player_y);
+            map->vars.player_y += IMAGE_SIZE;
+        load_protagonist(map, map->vars.player_x, map->vars.player_y);
     }
     if (pos == 'x'){
-        mlx_delete_image(vars->mlx, vars->image);
+        mlx_delete_image(map->vars.mlx, map->vars.image);
         if (op == '-')
-            vars->player_x -= IMAGE_SIZE;
+            map->vars.player_x -= IMAGE_SIZE;
         else if (op == '+')
-            vars->player_x += IMAGE_SIZE;
-        load_protagonist(vars, vars->player_x, vars->player_y);
+            map->vars.player_x += IMAGE_SIZE;
+        load_protagonist(map, map->vars.player_x, map->vars.player_y);
     }
 }
 
 void    handle_move(t_map_data *map, t_coords coords, char pos, char op)
 {
-    do_move(&map->vars, pos, op);
+    do_move(map, pos, op);
     map->vars.coin_count += check_coin(&map->vars, map, coords.new_x, coords.new_y);
     check_exit(&map->vars, map);
     go_to_exit(&map->vars, map, coords.map_x, coords.map_y);

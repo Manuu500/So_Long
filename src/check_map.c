@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:05:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/04 20:21:22 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 21:49:47 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,25 +86,13 @@ void	check_map(t_map_data *map)
 
 	count = 0;
 	if (!check_walls(map))
-	{
-		exit(EXIT_FAILURE);
-		perror("Las paredes fallan");
-	}
+		ft_error(map, "Walls are not complete");
 	if (!check_map_extension(map->map_name))
-	{
-		perror("El nombre del archivo no es un .ber");
-		exit(EXIT_FAILURE);
-	}
+		ft_error(map, "The file's name is not type .ber");
 	if (!check_duplicate(map))
-	{
-		perror("Hay duplicados");
-		exit(EXIT_FAILURE);
-	}
+		ft_error(map, "There's duplicate collectibles");
 	if (!check_coin_surround(map))
-	{
-		perror("Una moneda es inaccesible");
-		exit(EXIT_FAILURE);
-	}
+		ft_error(map, "One coin is not accesible");
 	map->vars.all_collec_count = check_path(map, 1, 1, &count);
 	check_num_collec(map, &count);
 }

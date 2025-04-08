@@ -1,7 +1,7 @@
 NAME	:= so_long
 
 CC = cc
-CFLAGS	:= -Wextra -Wall -Werror -fsanitize=address -g
+CFLAGS	:= -Wextra -Wall -Werror -g
 
 LIBMLX	:= ./libs/MLX42
 LIBFT	:= ./libs/libft
@@ -10,7 +10,7 @@ HEADERS	:=	-I ./inc \
 			-I $(LIBMLX)/include \
 			-I $(LIBFT)
 
-LIBS	:=	$(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -fsanitize=address\
+LIBS	:=	$(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm\
 			$(LIBFT)/libft.a 
 
 SRC :=	src/main.c \
