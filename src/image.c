@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 18:33:39 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/04 18:13:01 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 15:43:21 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,33 @@ void	place_exit(t_vars *vars, t_map_data *map)
 	mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
 	mlx_image_to_window(vars->mlx, image, map->map_x * IMAGE_SIZE , map->map_y * IMAGE_SIZE);
 	mlx_delete_texture(texture);
+}
+
+void	load_wall(t_map_data *map, int x, int y)
+{
+	mlx_texture_t *texture;
+	mlx_image_t	*image;
+	
+	texture = mlx_load_png("textures/pared.png");
+	image = mlx_texture_to_image(map->vars.mlx, texture); 
+	mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
+	mlx_image_to_window(map->vars.mlx, image, x * IMAGE_SIZE, y * IMAGE_SIZE);
+	mlx_delete_texture(texture);
+}
+
+void	load_coin_image(t_map_data *map, int x, int y)
+{
+	mlx_texture_t *texture;
+	mlx_image_t	*image;
+	
+	texture = mlx_load_png("textures/box.png");
+	image = mlx_texture_to_image(map->vars.mlx, texture); 
+	mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
+	mlx_image_to_window(map->vars.mlx, image, x * IMAGE_SIZE, y * IMAGE_SIZE);
+	mlx_delete_texture(texture);
+	map->vars.coins[map->vars.num_coins] = malloc(sizeof(t_coin));
+    map->vars.coins[map->vars.num_coins]->map_x = x;
+    map->vars.coins[map->vars.num_coins]->map_y = y;
+	map->vars.coins[map->vars.num_coins]->image = image;
+    map->vars.num_coins++;
 }

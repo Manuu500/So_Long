@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/04 20:14:02 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 15:36:22 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,7 @@ void	initialize_var(t_map_data *map);
 void free_coins(t_map_data *map);
 void	free_map(char **map, int height);
 void	check_num_collec(t_map_data *map, int *count);
+void	load_wall(t_map_data *map, int x, int y);
+void	load_coin_image(t_map_data *map, int x, int y);
 
 #endif
