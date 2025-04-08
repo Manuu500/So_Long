@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:18:09 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 16:28:39 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:47:01 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,21 @@ void	load_map_structure(t_map_data *map)
     else
 		map->width = 0;
 }
+
+// void	redraw_map(t_map_data *map)
+// {
+// 	int	y;
+// 	int	x;
+
+// 	y = 0;
+// 	while (y < map->height)
+// 	{
+// 		x = 0;
+// 		while (x < map->width)
+// 		{
+// 			place_walls(map, &map->vars, x, y);
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// }

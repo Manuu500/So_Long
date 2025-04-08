@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 18:33:39 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 16:41:17 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:57:51 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	load_coin_image(t_map_data *map, int x, int y)
 	mlx_image_t	*image;
 	
 	texture = mlx_load_png("textures/box.png");
-	image = mlx_texture_to_image(map->vars.mlx, texture); 
+	image = mlx_texture_to_image(map->vars.mlx, texture);
 	mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
 	mlx_image_to_window(map->vars.mlx, image, x * IMAGE_SIZE, y * IMAGE_SIZE);
 	mlx_delete_texture(texture);

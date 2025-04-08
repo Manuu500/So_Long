@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 17:07:55 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 16:40:53 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:59:10 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,6 @@ int	main(int arcv, char **argv)
 	map.vars.mlx = mlx_init(map.width * IMAGE_SIZE, map.height * IMAGE_SIZE, "So_Long", 0);
 	if (!map.vars.mlx)
 		ft_error();
-	map.vars.coins = malloc(sizeof(t_coin *) * MAX_COINS);
-	if (!map.vars.coins)
-		free(map.vars.coins);
-	map.vars.num_coins = 0;
 	load_background(&map.vars, &map);	
 	process_map(&map, map.width, map.height, &map.vars);
 	check_map(&map);

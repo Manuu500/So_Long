@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:13:01 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 16:29:56 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:59:32 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_exit(t_vars *vars, t_map_data *map)
 	y = 0;
 	// (void) map_x;
 	// (void) map_y;
-	if (vars->coin_count == 4)
+	if (vars->coin_count == vars->num_coins)
 	{
 		while (y < map->height)
 		{
@@ -39,7 +39,7 @@ void	check_exit(t_vars *vars, t_map_data *map)
 
 int	go_to_exit(t_vars *vars, t_map_data *map, int map_x, int map_y)
 {
-	if (vars->coin_count == 4)
+	if (vars->coin_count == vars->num_coins)
 	{
 		if (map->map[map_y - 1][map_x] == 'E' && vars->keydata.key == MLX_KEY_W)
 		{
@@ -119,4 +119,8 @@ char	**duplicate_map(t_map_data *map, int height)
 void	initialize_var(t_map_data *map)
 {
 	map->vars.coin_count = 0;
+	map->vars.num_coins = 0;
+	map->vars.coins = malloc(sizeof(t_coin *) * MAX_COINS);
+	if (!map->vars.coins)
+		free(map->vars.coins);
 }

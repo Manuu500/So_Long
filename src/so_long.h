@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 16:42:26 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:56:50 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <fcntl.h>
 # define IMAGE_SIZE 60
 # define PIXEL_SPACING 20
-# define MAX_COINS 4
+# define MAX_COINS 1000
 
 typedef struct s_coords
 {
@@ -41,6 +41,7 @@ typedef struct s_coin
 typedef struct	s_vars {
 	void	*mlx;
 	mlx_image_t	*image;
+	// mlx_image_t *box;
 	t_coin **coins;
 	int	num_coins;
 	int coin_count;
@@ -102,5 +103,6 @@ void	load_wall(t_map_data *map, int x, int y);
 void	load_coin_image(t_map_data *map, int x, int y);
 void	initialize_pos_vars(t_map_data *map, int map_x, int map_y);
 void	load_map_structure(t_map_data *map);
+void	redraw_map(t_map_data *map);
 
 #endif
