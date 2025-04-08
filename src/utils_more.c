@@ -1,46 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   utils_more.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/04 19:21:20 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 16:22:41 by mruiz-ur         ###   ########.fr       */
+/*   Created: 2025/04/08 16:18:09 by mruiz-ur          #+#    #+#             */
+/*   Updated: 2025/04/08 16:28:39 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
-void free_coins(t_map_data *map)
+void	initialize_pos_vars(t_map_data *map, int map_x, int map_y)
 {
-	int	i;
-	
-	i = 0;
-	if (!map->vars.coins)
-		return;
-	while (i < map->vars.num_coins)
-	{
-		free(map->vars.coins[i]);
-		i++;
-	}
-	free(map->vars.coins);
-	map->vars.coins = NULL;
+	map->coords.map_x = map_x;
+    map->coords.map_y = map_y;
 }
 
-void	free_map(char **map, int height)
+void	load_map_structure(t_map_data *map)
 {
-	int	y;
-
-	y = 0;
-	if (!map)
-		return;
-	while (y < height)
-	{
-		free(map[y]);
-		y++;
-	}
-	free(map);
-	map = NULL;
+	map->height = 0;
+    while (map->map[map->height])
+		map->height++;
+    if (map->height > 0)
+		map->width = ft_strlen(map->map[0]);
+    else
+		map->width = 0;
 }

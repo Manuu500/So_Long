@@ -6,21 +6,21 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:13:01 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/04 19:50:52 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:29:56 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	check_exit(t_vars *vars, t_map_data *map, int map_x, int map_y)
+void	check_exit(t_vars *vars, t_map_data *map)
 {
 	int	x;
 	int	y;
 
 	x = 0;
 	y = 0;
-	(void) map_x;
-	(void) map_y;
+	// (void) map_x;
+	// (void) map_y;
 	if (vars->coin_count == 4)
 	{
 		while (y < map->height)

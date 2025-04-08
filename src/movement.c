@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 12:45:59 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/04 19:38:36 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:30:45 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,34 +32,39 @@ void    do_move(t_vars *vars, char pos, char op)
     }
 }
 
+void    handle_move(t_map_data *map, t_coords coords, char pos, char op)
+{
+    do_move(&map->vars, pos, op);
+    map->vars.coin_count += check_coin(&map->vars, map, coords.new_x, coords.new_y);
+    check_exit(&map->vars, map);
+    go_to_exit(&map->vars, map, coords.map_x, coords.map_y);
+}
+
 void    move_player(t_map_data *map, int map_x, int map_y)
 {
-    if (!(map->map[map_y - 1][map_x] == '1') && map->vars.keydata.key == MLX_KEY_W)
+    initialize_pos_vars(map, map_x, map_y);
+    if (map->vars.keydata.key == MLX_KEY_W && map->map[map_y - 1][map_x] != '1')
     {
-        do_move(&map->vars, 'y', '-');
-        map->vars.coin_count += check_coin(&map->vars, map, map_x, map_y - 1);
-        check_exit(&map->vars, map, map_x, map_y);
-        go_to_exit(&map->vars, map, map_x, map_y);
+        map->coords.new_x = map_x;
+        map->coords.new_y = map_y - 1;
+        handle_move(map, map->coords, 'y', '-');
     }
-    else if (!(map->map[map_y + 1][map_x] == '1') && map->vars.keydata.key == MLX_KEY_S)
+    else if (map->vars.keydata.key == MLX_KEY_S && map->map[map_y + 1][map_x] != '1')
     {
-        do_move(&map->vars, 'y', '+');
-        map->vars.coin_count += check_coin(&map->vars, map, map_x, map_y + 1);
-        check_exit(&map->vars, map, map_x, map_y);
-        go_to_exit(&map->vars, map, map_x, map_y);
+        map->coords.new_x = map_x;
+        map->coords.new_y = map_y + 1;
+        handle_move(map, map->coords, 'y', '+');
     }
-    else if (!(map->map[map_y][map_x - 1] == '1') && map->vars.keydata.key == MLX_KEY_A)
+    else if (map->vars.keydata.key == MLX_KEY_A && map->map[map_y][map_x - 1] != '1')
     {
-        do_move(&map->vars, 'x', '-');
-        map->vars.coin_count += check_coin(&map->vars, map, map_x - 1, map_y);
-        check_exit(&map->vars, map, map_x, map_y);
-        go_to_exit(&map->vars, map, map_x, map_y);
+        map->coords.new_x = map_x - 1;
+        map->coords.new_y = map_y;
+        handle_move(map, map->coords, 'x', '-');
     }
-    else if (!(map->map[map_y][map_x + 1] == '1') && map->vars.keydata.key == MLX_KEY_D)
+    else if (map->vars.keydata.key == MLX_KEY_D && map->map[map_y][map_x + 1] != '1')
     {
-        do_move(&map->vars, 'x', '+');
-        map->vars.coin_count += check_coin(&map->vars, map, map_x + 1, map_y);
-        check_exit(&map->vars, map, map_x, map_y);
-        go_to_exit(&map->vars, map, map_x, map_y);
+        map->coords.new_x = map_x + 1;
+        map->coords.new_y = map_y;
+        handle_move(map, map->coords, 'x', '+');
     }
 }

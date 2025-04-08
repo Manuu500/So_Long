@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 15:36:22 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:42:26 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,17 @@
 # include <unistd.h>
 # include <memory.h>
 # include <fcntl.h>
-// # define WIDTH 1920
-// # define HEIGHT 1080
 # define IMAGE_SIZE 60
 # define PIXEL_SPACING 20
 # define MAX_COINS 4
-// typedef struct s_init_vars
-// {
-// 	int	x;
-// 	int	y;
-// }				t_init_vars;
+
+typedef struct s_coords
+{
+    int map_x;
+    int map_y;
+    int new_x;
+    int new_y;
+}				t_coords;
 
 typedef struct s_coin
 {
@@ -60,6 +61,7 @@ typedef struct	s_map_data {
 	int offset_y;
 	int	map_x;
 	int	map_y;
+	t_coords coords;
 	t_vars vars;
 }				t_map_data;
 
@@ -79,7 +81,7 @@ void	draw_map(t_vars *vars, t_map_data *map);
 void    pick_coin(t_vars *vars);
 int    check_coin(t_vars *vars, t_map_data *map, int map_x, int map_y);
 void	place_exit(t_vars *vars, t_map_data *map);
-void	check_exit(t_vars *vars, t_map_data *map, int map_x, int map_y);
+void	check_exit(t_vars *vars, t_map_data *map);
 int	go_to_exit(t_vars *vars, t_map_data *map, int map_x, int map_y);
 void	check_coin_sur(t_map_data *map, int	x,	int y);
 void	check_limits(t_map_data *map, int x, int y);
@@ -98,5 +100,7 @@ void	free_map(char **map, int height);
 void	check_num_collec(t_map_data *map, int *count);
 void	load_wall(t_map_data *map, int x, int y);
 void	load_coin_image(t_map_data *map, int x, int y);
+void	initialize_pos_vars(t_map_data *map, int map_x, int map_y);
+void	load_map_structure(t_map_data *map);
 
 #endif
