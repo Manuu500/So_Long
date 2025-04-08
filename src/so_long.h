@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 17:56:50 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:26:31 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct s_coin
 typedef struct	s_vars {
 	void	*mlx;
 	mlx_image_t	*image;
-	// mlx_image_t *box;
 	t_coin **coins;
 	int	num_coins;
 	int coin_count;
@@ -66,7 +65,7 @@ typedef struct	s_map_data {
 	t_vars vars;
 }				t_map_data;
 
-void	print_text(mlx_key_data_t keydata, void *params);
+// void	print_text(mlx_key_data_t keydata, void *params);
 void	loop_functions(void	*param);
 void	ft_error();
 void	check_image(mlx_image_t *image);
@@ -104,5 +103,7 @@ void	load_coin_image(t_map_data *map, int x, int y);
 void	initialize_pos_vars(t_map_data *map, int map_x, int map_y);
 void	load_map_structure(t_map_data *map);
 void	redraw_map(t_map_data *map);
+void	ft_texture_error();
+void	ft_image_error();
 
 #endif

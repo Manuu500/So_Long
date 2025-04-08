@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 18:33:39 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 19:01:53 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:33:28 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	load_protagonist(t_vars *vars, int x, int y)
 
 	texture = mlx_load_png("textures/protagonist.png");
 	if (!texture)
-		ft_error();
+		ft_texture_error();
 	vars->image = mlx_texture_to_image(vars->mlx, texture);
 	if (!vars->image)
-		ft_error();
+		ft_image_error();
 	mlx_resize_image(vars->image, IMAGE_SIZE, IMAGE_SIZE);
 	if (mlx_image_to_window(vars->mlx, vars->image, x, y) < 0)
 		ft_error();
@@ -38,7 +38,7 @@ void	load_background(t_vars *vars, t_map_data *map)
 	y = 0;
 	texture = mlx_load_png("textures/hierba.png");
 	if (!texture)
-		ft_error();
+		ft_texture_error();
 	while (y < map->height * IMAGE_SIZE)
 	{
 		x = 0;
@@ -46,7 +46,7 @@ void	load_background(t_vars *vars, t_map_data *map)
 		{
 			vars->image = mlx_texture_to_image(vars->mlx, texture);
 			if (!vars->image)
-				ft_error();
+				ft_image_error();
 			if (mlx_image_to_window(vars->mlx, vars->image, x, y) < 0)
 				ft_error();
 			x += texture->width;
@@ -64,10 +64,10 @@ void	place_exit(t_vars *vars, t_map_data *map)
 	
 	texture = mlx_load_png("textures/gatico.png");
 	if (!texture)
-		ft_error();
+		ft_texture_error();
 	image = mlx_texture_to_image(vars->mlx, texture);
 	if (!image)
-		ft_error();
+		ft_image_error();
 	mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
 	if (mlx_image_to_window(vars->mlx, image, map->map_x * IMAGE_SIZE , map->map_y * IMAGE_SIZE) < 0)
 		ft_error();
@@ -81,10 +81,10 @@ void	load_wall(t_map_data *map, int x, int y)
 	
 	texture = mlx_load_png("textures/pared.png");
 	if (!texture)
-		ft_error();
+		ft_texture_error();
 	image = mlx_texture_to_image(map->vars.mlx, texture); 
 	if (!image)
-		ft_error();
+		ft_image_error();
 	mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
 	if (mlx_image_to_window(map->vars.mlx, image, x * IMAGE_SIZE, y * IMAGE_SIZE) < 0)
 		ft_error();
@@ -98,10 +98,10 @@ void	load_coin_image(t_map_data *map, int x, int y)
 	
 	texture = mlx_load_png("textures/box.png");
 	if (!texture)
-		ft_error();
+		ft_texture_error();
 	image = mlx_texture_to_image(map->vars.mlx, texture);
 	if (!image)
-		ft_error();
+		ft_image_error();
 	mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
 	if (mlx_image_to_window(map->vars.mlx, image, x * IMAGE_SIZE, y * IMAGE_SIZE) < 0)
 		ft_error();
