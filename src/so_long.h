@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 19:26:31 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:47:20 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,7 @@ void	load_map_structure(t_map_data *map);
 void	redraw_map(t_map_data *map);
 void	ft_texture_error();
 void	ft_image_error();
+void	clean_close(t_map_data *map);
+void	close_window_x(void	*param);
 
 #endif

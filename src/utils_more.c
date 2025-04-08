@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:18:09 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 17:47:01 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:50:28 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,23 @@ void	load_map_structure(t_map_data *map)
 		map->width = 0;
 }
 
+void	clean_close(t_map_data *map)
+{
+	free_coins(map);
+	free_map(map->map, map->height);
+	mlx_terminate(map->vars.mlx);
+	exit(EXIT_SUCCESS);
+}
+
+void	close_window_x(void	*param)
+{
+	t_map_data *map;
+
+	map = (t_map_data *)param;
+	clean_close(map);
+	mlx_terminate(map->vars.mlx);
+	exit(EXIT_SUCCESS);
+}
 // void	redraw_map(t_map_data *map)
 // {
 // 	int	y;

@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 17:25:43 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 17:41:35 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:45:30 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,5 @@ void	handle_key_event(mlx_key_data_t keydata, void *param)
     if (keydata.key == MLX_KEY_D && keydata.action == MLX_RELEASE)
         move_player(map, map_x / IMAGE_SIZE, map_y / IMAGE_SIZE);
     if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE)
-    {
-        free_coins(map);
-        free_map(map->map, map->height);
-        mlx_terminate(map->vars.mlx);
-        exit(EXIT_SUCCESS);
-    }
+        clean_close(map);
 }      

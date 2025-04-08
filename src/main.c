@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 17:07:55 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 17:59:10 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:49:10 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int arcv, char **argv)
 	process_map(&map, map.width, map.height, &map.vars);
 	check_map(&map);
 	mlx_key_hook(map.vars.mlx, handle_key_event, &map);
+	mlx_close_hook(map.vars.mlx, close_window_x, &map);
 	mlx_loop(map.vars.mlx);
 	mlx_close_window(map.vars.mlx);
 	free_coins(&map);
