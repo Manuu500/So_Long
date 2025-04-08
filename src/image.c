@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 18:33:39 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 17:57:51 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:01:53 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,14 @@ void	place_exit(t_vars *vars, t_map_data *map)
 	mlx_image_t *image;
 	
 	texture = mlx_load_png("textures/gatico.png");
-	image = mlx_texture_to_image(vars->mlx, texture); 
+	if (!texture)
+		ft_error();
+	image = mlx_texture_to_image(vars->mlx, texture);
+	if (!image)
+		ft_error();
 	mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
-	mlx_image_to_window(vars->mlx, image, map->map_x * IMAGE_SIZE , map->map_y * IMAGE_SIZE);
+	if (mlx_image_to_window(vars->mlx, image, map->map_x * IMAGE_SIZE , map->map_y * IMAGE_SIZE) < 0)
+		ft_error();
 	mlx_delete_texture(texture);
 }
 
@@ -75,9 +80,14 @@ void	load_wall(t_map_data *map, int x, int y)
 	mlx_image_t	*image;
 	
 	texture = mlx_load_png("textures/pared.png");
+	if (!texture)
+		ft_error();
 	image = mlx_texture_to_image(map->vars.mlx, texture); 
+	if (!image)
+		ft_error();
 	mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
-	mlx_image_to_window(map->vars.mlx, image, x * IMAGE_SIZE, y * IMAGE_SIZE);
+	if (mlx_image_to_window(map->vars.mlx, image, x * IMAGE_SIZE, y * IMAGE_SIZE) < 0)
+		ft_error();
 	mlx_delete_texture(texture);
 }
 
@@ -87,9 +97,14 @@ void	load_coin_image(t_map_data *map, int x, int y)
 	mlx_image_t	*image;
 	
 	texture = mlx_load_png("textures/box.png");
+	if (!texture)
+		ft_error();
 	image = mlx_texture_to_image(map->vars.mlx, texture);
+	if (!image)
+		ft_error();
 	mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
-	mlx_image_to_window(map->vars.mlx, image, x * IMAGE_SIZE, y * IMAGE_SIZE);
+	if (mlx_image_to_window(map->vars.mlx, image, x * IMAGE_SIZE, y * IMAGE_SIZE) < 0)
+		ft_error();
 	mlx_delete_texture(texture);
 	map->vars.coins[map->vars.num_coins] = malloc(sizeof(t_coin));
     map->vars.coins[map->vars.num_coins]->map_x = x;
