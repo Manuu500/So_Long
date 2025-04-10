@@ -10,7 +10,7 @@ HEADERS	:=	-I ./inc \
 			-I $(LIBMLX)/include \
 			-I $(LIBFT)
 
-LIBS	:=	$(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm\
+LIBS	:=	$(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm \
 			$(LIBFT)/libft.a 
 
 SRC :=	src/main.c \

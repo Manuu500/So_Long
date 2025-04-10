@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:13:01 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 20:52:14 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:10:24 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void	initialize_var(t_map_data *map)
 {
 	map->vars.coin_count = 0;
 	map->vars.num_coins = 0;
-	map->vars.coins = malloc(sizeof(t_coin *) * MAX_COINS);
-	if (!map->vars.coins)
-		free(map->vars.coins);
+	// map->vars.coins = malloc(sizeof(t_coin *) * MAX_COINS);
+	// if (!map->vars.coins)
+	// 	free(map->vars.coins);
 }

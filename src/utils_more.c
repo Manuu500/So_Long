@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:18:09 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 21:07:50 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:13:16 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	initialize_pos_vars(t_map_data *map, int map_x, int map_y)
 
 void	load_map_structure(t_map_data *map)
 {
+	int	x;
+	int	y;
 	map->height = 0;
     while (map->map[map->height])
 		map->height++;
@@ -27,6 +29,22 @@ void	load_map_structure(t_map_data *map)
 		map->width = ft_strlen(map->map[0]);
     else
 		map->width = 0;
+	map->vars.coins_num = 0;
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (map->map[y][x] != '\0')
+		{
+			if (map->map[y][x] == 'C')
+				map->vars.coins_num++;
+			x++;
+		}
+		y++;
+	}
+	map->vars.coins = malloc(sizeof(t_coin *) * map->vars.coins_num);
+	if (!map->vars.coins)
+		ft_error(map, "Failed to allocate memory for coins");
 }
 
 void	clean_close(t_map_data *map)

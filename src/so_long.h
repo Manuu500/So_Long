@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 21:56:06 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:14:12 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define FAILURE 1
 # define SUCCESS 0
 // # define PIXEL_SPACING 20
-# define MAX_COINS 100
+// # define MAX_COINS 250
 
 typedef struct s_coords
 {
@@ -46,6 +46,7 @@ typedef struct	s_vars {
 	t_coin **coins;
 	int	num_coins;
 	int coin_count;
+	int	coins_num;
 	int	player_x;
 	int	player_y;
 	int	collec_count;
