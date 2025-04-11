@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 12:45:59 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 21:59:06 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/11 18:56:35 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ void    handle_move(t_map_data *map, t_coords coords, char pos, char op)
     map->vars.coin_count += check_coin(&map->vars, map, coords.new_x, coords.new_y);
     check_exit(&map->vars, map);
     go_to_exit(&map->vars, map, coords.map_x, coords.map_y);
+    map->vars.move_count++;
+    ft_printf("%d", map->vars.move_count);
+    ft_printf("\n");
+    
 }
 
 void    move_player(t_map_data *map, int map_x, int map_y)

@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/11 18:35:56 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/11 18:48:34 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void    process_map(t_map_data *mapping, int width, int height, t_vars *vars)
     {
         if (ft_strlen(mapping->map[y]) != mapping->width)
         {
-            perror("Error\nThe map is not rectangular");
+            ft_error(mapping, "The map is not rectangular");
             clean_close(mapping);
         }
         x = 0;

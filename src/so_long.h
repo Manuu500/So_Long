@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/10 18:14:12 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/11 18:55:13 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct	s_vars {
 	int	num_coins;
 	int coin_count;
 	int	coins_num;
+	int	move_count;
 	int	player_x;
 	int	player_y;
 	int	collec_count;
