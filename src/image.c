@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 18:33:39 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/10 18:41:19 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/11 19:19:37 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	load_protagonist(t_map_data *map, int x, int y)
 {
 	mlx_texture_t *texture;
 
-	texture = mlx_load_png("textures/protagonist.png");
+	texture = safe_load_texture("textures/protagonist.png");
 	if (!texture)
 		ft_error(map, "Texture is not loading");
-	map->vars.image = mlx_texture_to_image(map->vars.mlx, texture);
+	map->vars.image = safe_texture_to_image(map->vars.mlx, texture);
 	if (!map->vars.image)
 		ft_error(map, "Image is not loading");
 	mlx_resize_image(map->vars.image, IMAGE_SIZE, IMAGE_SIZE);
@@ -36,7 +36,7 @@ void	load_background(t_vars *vars, t_map_data *map)
 
 	x = 0;
 	y = 0;
-	texture = mlx_load_png("textures/hierba.png");
+	texture = safe_load_texture("textures/hierba.png");
 	if (!texture)
 		ft_error(map, "Texture is not loading");
 	while (y < map->height * IMAGE_SIZE)
@@ -44,7 +44,7 @@ void	load_background(t_vars *vars, t_map_data *map)
 		x = 0;
 		while (x < map->width * IMAGE_SIZE)
 		{
-			vars->image = mlx_texture_to_image(vars->mlx, texture);
+			vars->image = safe_texture_to_image(vars->mlx, texture);
 			if (!vars->image)
 				ft_error(map, "Image is not loading");
 			if (mlx_image_to_window(vars->mlx, vars->image, x, y) < 0)
@@ -62,7 +62,7 @@ void	place_exit(t_vars *vars, t_map_data *map)
 	mlx_texture_t *texture;
 	mlx_image_t *image;
 	
-	texture = mlx_load_png("textures/gatico.png");
+	texture = safe_load_texture("textures/gatico.png");
 	if (!texture)
 		ft_error(map, "Texture is not loading");
 	image = mlx_texture_to_image(vars->mlx, texture);
@@ -79,7 +79,7 @@ void	load_wall(t_map_data *map, int x, int y)
 	mlx_texture_t *texture;
 	mlx_image_t	*image;
 	
-	texture = mlx_load_png("textures/pared.png");
+	texture = safe_load_texture("textures/pared.png");
 	if (!texture)
 		ft_error(map, "Texture is not loading");
 	image = mlx_texture_to_image(map->vars.mlx, texture); 
@@ -96,7 +96,7 @@ void	load_coin_image(t_map_data *map, int x, int y)
 	mlx_texture_t *texture;
 	mlx_image_t	*image;
 	
-	texture = mlx_load_png("textures/box.png");
+	texture = safe_load_texture("textures/box.png");
 	if (!texture)
 		ft_error(map, "Texture is not loading");
 	image = mlx_texture_to_image(map->vars.mlx, texture);
