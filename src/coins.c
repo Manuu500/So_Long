@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:14:31 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 22:01:34 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/11 19:45:39 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int check_coin(t_vars *vars, t_map_data *map, int map_x, int map_y)
 {
-    int counter;
+	int counter;
     int i;
 
     counter = 0;

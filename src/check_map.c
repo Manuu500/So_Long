@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:05:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/11 18:35:30 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/11 19:40:34 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	check_duplicate(t_map_data *map)
 	int	e_count;
 	int	p_count;
 	int	c_count;
-	
+
 	read_matrix(map, &p_count, &c_count, &e_count);
 	if ((p_count > 1 || e_count > 1) || (p_count < 1 ||
 		e_count < 1 || c_count < 1))
@@ -26,7 +26,7 @@ static int	check_duplicate(t_map_data *map)
 	return (1);
 }
 
-int	check_map_extension(char	*filename)
+int	check_map_extension(char *filename)
 {
 	char	*word;
 	int	file_length;
@@ -42,7 +42,7 @@ static int	check_walls(t_map_data *map)
 {
 	int	x;
 	int	y;
-	
+
 	y = 0;
 	while (map->map[y])
 	{
@@ -71,9 +71,9 @@ static int	check_path(t_map_data *map, int x, int y, int *count)
 		(*count)++;
 	map->map_copy[y][x] = '*';
 	check_path(map, x, y - 1, count);
-    check_path(map, x, y + 1, count);
-    check_path(map, x + 1, y, count);
-    check_path(map, x - 1, y, count);
+	check_path(map, x, y + 1, count);
+	check_path(map, x + 1, y, count);
+	check_path(map, x - 1, y, count);
 	return (*count);
 }
 
