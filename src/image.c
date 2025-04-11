@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 18:33:39 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/11 19:19:37 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/11 19:21:26 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	place_exit(t_vars *vars, t_map_data *map)
 	texture = safe_load_texture("textures/gatico.png");
 	if (!texture)
 		ft_error(map, "Texture is not loading");
-	image = mlx_texture_to_image(vars->mlx, texture);
+	image = safe_texture_to_image(vars->mlx, texture);
 	if (!image)
 		ft_error(map, "Image is not loading");
 	mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
@@ -82,7 +82,7 @@ void	load_wall(t_map_data *map, int x, int y)
 	texture = safe_load_texture("textures/pared.png");
 	if (!texture)
 		ft_error(map, "Texture is not loading");
-	image = mlx_texture_to_image(map->vars.mlx, texture); 
+	image = safe_texture_to_image(map->vars.mlx, texture); 
 	if (!image)
 		ft_error(map, "Image is not loading");
 	mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
@@ -99,7 +99,7 @@ void	load_coin_image(t_map_data *map, int x, int y)
 	texture = safe_load_texture("textures/box.png");
 	if (!texture)
 		ft_error(map, "Texture is not loading");
-	image = mlx_texture_to_image(map->vars.mlx, texture);
+	image = safe_texture_to_image(map->vars.mlx, texture);
 	if (!image)
 		ft_error(map, "Image is not loading");
 	mlx_resize_image(image, IMAGE_SIZE, IMAGE_SIZE);
