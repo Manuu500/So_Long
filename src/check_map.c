@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:05:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 21:49:47 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/11 18:35:30 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,10 @@ static int	check_duplicate(t_map_data *map)
 	int	c_count;
 	
 	read_matrix(map, &p_count, &c_count, &e_count);
-	printf("Numero personajes: %d, Numero salidas: %d, Numero monedas: %d", p_count, e_count, c_count);
 	if ((p_count > 1 || e_count > 1) || (p_count < 1 ||
 		e_count < 1 || c_count < 1))
 		return (0);
 	map->vars.collec_count = c_count + e_count;
-	printf("El numero total de coleccionables que hay son: %d\n", map->vars.collec_count);
 	return (1);
 }
 
@@ -71,7 +69,6 @@ static int	check_path(t_map_data *map, int x, int y, int *count)
 		return (0);
 	if (map->map_copy[y][x] == 'E' || map->map_copy[y][x] == 'C')
 		(*count)++;
-	printf("La funcion 'check_path' ha contado el siguiente numero de coleccionables: %d\n", *count);
 	map->map_copy[y][x] = '*';
 	check_path(map, x, y - 1, count);
     check_path(map, x, y + 1, count);
