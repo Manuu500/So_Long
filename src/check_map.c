@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:05:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/22 19:00:09 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/22 19:04:54 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static int	check_duplicate(t_map_data *map)
 		ft_error(map, "There is not any player on the map");
 	else if (e_count < 1)
 		ft_error(map, "There are not any escapes on the map");
-	else if ((p_count > 1 || e_count > 1) || (p_count < 1 ||
-		e_count < 1 || c_count < 1))
+	else if ((p_count > 1 || e_count > 1) || (p_count < 1
+			|| e_count < 1 || c_count < 1))
 		return (0);
 	map->vars.collec_count = c_count + e_count;
 	return (1);
@@ -35,7 +35,7 @@ static int	check_duplicate(t_map_data *map)
 static int	check_map_extension(char *filename)
 {
 	char	*word;
-	int	file_length;
+	int		file_length;
 
 	file_length = ft_strlen(filename);
 	word = ft_strnstr(filename, ".ber", file_length);
@@ -86,7 +86,7 @@ static int	check_path(t_map_data *map, int x, int y, int *count)
 void	check_map(t_map_data *map)
 {
 	int	count;
-	
+
 	count = 0;
 	if (!check_map_extension(map->map_name))
 		ft_error(map, "The file's name is not type .ber");
@@ -98,7 +98,8 @@ void	check_map(t_map_data *map)
 		ft_error(map, "One coin is not accesible");
 	map->vars.player_x_copy = map->vars.player_x / IMAGE_SIZE;
 	map->vars.player_y_copy = map->vars.player_y / IMAGE_SIZE;
-	map->vars.all_collec_count = check_path(map, map->vars.player_x_copy, map->vars.player_y_copy, &count);
+	map->vars.all_collec_count = check_path(map, map->vars.player_x_copy,
+			map->vars.player_y_copy, &count);
 	ft_printf("Antes del mensaje: %d\n", map->vars.all_collec_count);
 	check_num_collec(map, &count);
 }
