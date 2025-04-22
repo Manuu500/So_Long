@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:26:15 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/22 19:43:09 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/22 20:00:28 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	ft_error(t_map_data *map, char	*error)
 
 // mlx_image_t *safe_texture_to_image(mlx_t *mlx, mlx_texture_t *texture)
 // {
-// 	mlx_image_t	*image;
-	
+// 	mlx_image_t	*image;	
 // 	if (!texture)
 // 		return 0;
 // 	int saved_stderr = dup(STDERR_FILENO);

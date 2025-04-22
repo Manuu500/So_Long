@@ -6,20 +6,19 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 19:21:20 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/08 16:22:41 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/22 20:01:06 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
-void free_coins(t_map_data *map)
+void	free_coins(t_map_data *map)
 {
 	int	i;
-	
+
 	i = 0;
 	if (!map->vars.coins)
-		return;
+		return ;
 	while (i < map->vars.num_coins)
 	{
 		free(map->vars.coins[i]);
@@ -35,7 +34,7 @@ void	free_map(char **map, int height)
 
 	y = 0;
 	if (!map)
-		return;
+		return ;
 	while (y < height)
 	{
 		free(map[y]);

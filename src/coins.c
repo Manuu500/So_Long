@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:14:31 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/22 19:09:57 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/22 20:27:55 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,11 @@ int	check_coin_surround(t_map_data *map)
 		y++;
 	}
 	return (1);
+}
+
+void	allocate_coins(t_map_data *map)
+{
+	map->vars.coins = malloc(sizeof(t_coin *) * map->vars.coins_num);
+	if (!map->vars.coins)
+		ft_error(map, "Failed to allocate memory for coins");
 }
