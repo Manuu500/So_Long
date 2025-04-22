@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:05:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/22 18:50:31 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/22 19:00:09 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,13 @@ static int	check_duplicate(t_map_data *map)
 	int	c_count;
 
 	read_matrix(map, &p_count, &c_count, &e_count);
-	if ((p_count > 1 || e_count > 1) || (p_count < 1 ||
+	if (c_count < 1)
+		ft_error(map, "There are 0 coins on the map");
+	else if (p_count < 1)
+		ft_error(map, "There is not any player on the map");
+	else if (e_count < 1)
+		ft_error(map, "There are not any escapes on the map");
+	else if ((p_count > 1 || e_count > 1) || (p_count < 1 ||
 		e_count < 1 || c_count < 1))
 		return (0);
 	map->vars.collec_count = c_count + e_count;
@@ -87,7 +93,7 @@ void	check_map(t_map_data *map)
 	if (!check_walls(map))
 		ft_error(map, "Walls are not complete");
 	if (!check_duplicate(map))
-		ft_error(map, "There's duplicate collectibles");
+		ft_error(map, "Duplicated elements");
 	if (!check_coin_surround(map))
 		ft_error(map, "One coin is not accesible");
 	map->vars.player_x_copy = map->vars.player_x / IMAGE_SIZE;
