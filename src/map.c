@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/11 18:48:34 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/22 17:58:45 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void read_map(const char *file, t_map_data *mapping)
     char    *temp;
     char    *old_line;
 
-    
     line = NULL;
     fd = open(file, O_RDONLY);
     if (fd < 0)

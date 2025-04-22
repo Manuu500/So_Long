@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/11 19:16:54 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/22 18:53:32 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct	s_vars {
 	int coin_count;
 	int	coins_num;
 	int	move_count;
+	int	player_x_copy;
+	int	player_y_copy;
 	int	player_x;
 	int	player_y;
 	int	collec_count;
@@ -92,7 +94,7 @@ void	check_flood(char **map);
 void	check_map(t_map_data *map);
 void	read_matrix(t_map_data *map, int *p_count, int *c_count, int *e_count);
 int    check_coin_surround(t_map_data *map);
-int	check_map_extension(char	*filename);
+// int	check_map_extension(char	*filename);
 char	**duplicate_map(t_map_data *map, int height);
 void debug_mapa(t_map_data *map);
 void free_duplicate_map(char **map_copy, int height);
@@ -111,6 +113,7 @@ void	ft_image_error();
 void	clean_close(t_map_data *map);
 void	close_window_x(void	*param);
 void	ft_error(t_map_data *map, char	*error);
+void	create_pos_copy(t_map_data *map, int x, int y);
 mlx_texture_t *safe_load_texture(const char *path);
 mlx_image_t *safe_texture_to_image(mlx_t *mlx, mlx_texture_t *texture);
 

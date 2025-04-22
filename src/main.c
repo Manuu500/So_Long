@@ -6,17 +6,22 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 17:07:55 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/22 17:13:19 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/22 17:58:18 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int arcv, char **argv)
+int	main(int argc, char **argv)
 {
 	t_map_data map;
 	
-	(void) arcv;
+	if (argc > 2)
+	{
+		ft_printf("Error\n");
+		ft_printf("There are more than 2 arguments");
+		return (FAILURE);
+	}
 	map.map_name = argv[1];
 	initialize_var(&map);
 	map.vars.move_count = 0;

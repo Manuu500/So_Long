@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:13:01 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/11 18:35:51 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/22 18:52:42 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ void	read_matrix(t_map_data *map, int *p_count, int *c_count, int *e_count)
 char	**duplicate_map(t_map_data *map, int height)
 {
     int	y;
-    
+    int	x;
+
     y = 0;
     map->map_copy = malloc(sizeof(char *) * (height + 1));
     if (!map->map_copy)
@@ -104,6 +105,12 @@ char	**duplicate_map(t_map_data *map, int height)
         map->map_copy[y] = ft_strdup(map->map[y]);
         if (!map->map_copy[y])
             exit(FAILURE);
+		x = 0;
+		while (map->map[y][x] != '\0')
+        {
+			create_pos_copy(map, x, y);
+            x++;
+        }
         y++;
     }
     map->map_copy[height] = NULL;

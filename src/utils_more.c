@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:18:09 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/11 19:16:19 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/22 18:52:14 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,15 @@ void	close_window_x(void	*param)
 	clean_close(map);
 	mlx_terminate(map->vars.mlx);
 	exit(SUCCESS);
+}
+
+void	create_pos_copy(t_map_data *map, int x, int y)
+{
+	if (map->map[y][x] == 'P')
+	{
+		map->vars.player_x_copy = x;
+		map->vars.player_y_copy = y;
+	}
 }
 
 

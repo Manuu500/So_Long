@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:05:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/11 19:40:34 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/22 18:50:31 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ static int	check_duplicate(t_map_data *map)
 	return (1);
 }
 
-int	check_map_extension(char *filename)
+static int	check_map_extension(char *filename)
 {
 	char	*word;
 	int	file_length;
 
 	file_length = ft_strlen(filename);
 	word = ft_strnstr(filename, ".ber", file_length);
-	if (word == NULL)
+	if (!word)
 		return (0);
 	return (1);
 }
@@ -71,8 +71,8 @@ static int	check_path(t_map_data *map, int x, int y, int *count)
 		(*count)++;
 	map->map_copy[y][x] = '*';
 	check_path(map, x, y - 1, count);
-	check_path(map, x, y + 1, count);
 	check_path(map, x + 1, y, count);
+	check_path(map, x, y + 1, count);
 	check_path(map, x - 1, y, count);
 	return (*count);
 }
@@ -80,16 +80,19 @@ static int	check_path(t_map_data *map, int x, int y, int *count)
 void	check_map(t_map_data *map)
 {
 	int	count;
-
+	
 	count = 0;
-	if (!check_walls(map))
-		ft_error(map, "Walls are not complete");
 	if (!check_map_extension(map->map_name))
 		ft_error(map, "The file's name is not type .ber");
+	if (!check_walls(map))
+		ft_error(map, "Walls are not complete");
 	if (!check_duplicate(map))
 		ft_error(map, "There's duplicate collectibles");
 	if (!check_coin_surround(map))
 		ft_error(map, "One coin is not accesible");
-	map->vars.all_collec_count = check_path(map, 1, 1, &count);
+	map->vars.player_x_copy = map->vars.player_x / IMAGE_SIZE;
+	map->vars.player_y_copy = map->vars.player_y / IMAGE_SIZE;
+	map->vars.all_collec_count = check_path(map, map->vars.player_x_copy, map->vars.player_y_copy, &count);
+	ft_printf("Antes del mensaje: %d\n", map->vars.all_collec_count);
 	check_num_collec(map, &count);
 }
