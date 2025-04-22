@@ -6,11 +6,12 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 12:45:59 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/22 20:51:24 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/22 21:04:55 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "MLX42/MLX42.h" // Include the MLX42 library header for mlx_key_data
 
 void	do_move(t_map_data *map, char pos, char op)
 {
@@ -50,27 +51,39 @@ void	move_player(t_map_data *map, int map_x, int map_y)
 {
 	initialize_pos_vars(map, map_x, map_y);
 	if (map->vars.keydata.key == MLX_KEY_W && map->map[map_y - 1][map_x] != '1')
+		process_move(map, map_x, map_y, MLX_KEY_W);
+	else if (map->vars.keydata.key == MLX_KEY_S
+		&& map->map[map_y + 1][map_x] != '1')
+		process_move(map, map_x, map_y, MLX_KEY_S);
+	else if (map->vars.keydata.key == MLX_KEY_A
+		&& map->map[map_y][map_x - 1] != '1')
+		process_move(map, map_x, map_y, MLX_KEY_A);
+	else if (map->vars.keydata.key == MLX_KEY_D
+		&& map->map[map_y][map_x + 1] != '1')
+		process_move(map, map_x, map_y, MLX_KEY_D);
+}
+
+void	process_move(t_map_data *map, int map_x, int map_y, keys_t key)
+{
+	if (key == MLX_KEY_W)
 	{
 		map->coords.new_x = map_x;
 		map->coords.new_y = map_y - 1;
 		handle_move(map, map->coords, 'y', '-');
 	}
-	else if (map->vars.keydata.key == MLX_KEY_S
-		&& map->map[map_y + 1][map_x] != '1')
+	else if (key == MLX_KEY_S)
 	{
 		map->coords.new_x = map_x;
 		map->coords.new_y = map_y + 1;
 		handle_move(map, map->coords, 'y', '+');
 	}
-	else if (map->vars.keydata.key == MLX_KEY_A
-		&& map->map[map_y][map_x - 1] != '1')
+	else if (key == MLX_KEY_A)
 	{
 		map->coords.new_x = map_x - 1;
 		map->coords.new_y = map_y;
 		handle_move(map, map->coords, 'x', '-');
 	}
-	else if (map->vars.keydata.key == MLX_KEY_D
-		&& map->map[map_y][map_x + 1] != '1')
+	else if (key == MLX_KEY_D)
 	{
 		map->coords.new_x = map_x + 1;
 		map->coords.new_y = map_y;

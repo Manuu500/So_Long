@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/22 20:49:33 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/22 21:02:50 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,6 @@ void			close_window_x(void	*param);
 void			ft_error(t_map_data *map, char	*error);
 void			create_pos_copy(t_map_data *map, int x, int y);
 void			allocate_coins(t_map_data	*map);
+void			process_move(t_map_data *map, int map_x, int map_y, keys_t key);
 
 #endif
