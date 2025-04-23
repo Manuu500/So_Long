@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:05:36 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/22 19:04:54 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:32:54 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,5 @@ void	check_map(t_map_data *map)
 	map->vars.player_y_copy = map->vars.player_y / IMAGE_SIZE;
 	map->vars.all_collec_count = check_path(map, map->vars.player_x_copy,
 			map->vars.player_y_copy, &count);
-	ft_printf("Antes del mensaje: %d\n", map->vars.all_collec_count);
 	check_num_collec(map, &count);
 }

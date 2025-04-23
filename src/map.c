@@ -6,7 +6,7 @@
 /*   By: mruiz-ur <mruiz-ur@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:44:16 by mruiz-ur          #+#    #+#             */
-/*   Updated: 2025/04/23 16:12:05 by mruiz-ur         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:30:06 by mruiz-ur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	process_map(t_map_data *mapping, int width, int height, t_vars *vars)
 
 void	place_walls(t_map_data *mapping, t_vars *vars, int x, int y)
 {
-	ft_printf("El caracter actual es: %c\n", mapping->map[y][x]);
 	if (y < 0 || y >= mapping->height || x < 0 || x >= mapping->width)
 		return ;
 	if (mapping->map[y][x] == '1')
